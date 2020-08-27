@@ -4,4 +4,18 @@
     <color name="colorPrimaryDark">#1F8B4C</color>
     <color name="colorAccent">#e74c3c</color>
     <color name="colorOrange">#e67e22</color>
+    
+    <color name="colorItem1Start">#FEBD1B</color>
+    <color name="colorItem1End">#E4A404</color>
+
+    <color name="colorItem2Start">#4D79FF</color>
+    <color name="colorItem2End">#0039E6</color>
+
+    <color name="colorItem3Start">#993399</color>
+    <color name="colorItem3End">#602060</color>
+
+    <color name="colorEndBackground">#50FFFFFF</color>
+    <color name="colorLightText">#ECECEC</color>
+    <color name="colorWhite">#FFFFFF</color>
+
 </resources>
