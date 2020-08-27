@@ -2,6 +2,7 @@ package com.trateg.bepresensimobile.home
 
 import android.os.Bundle
 import com.trateg.bepresensimobile.BaseFragment
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.DateFormat
 import java.util.*
 
@@ -17,14 +18,11 @@ class HomePresenter(var mView: HomeContract.View?) :
         }
     }
 
-//    override fun getCurrentDate(){
-//        val calendar: Calendar = Calendar.getInstance()
-//        val currentDate: String = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime())
-//        textViewDate.setText(currentDate)
-//    }
-
-    override fun onViewCreated() {
-
+    override fun getCurrentDate(): String {
+        //Menampilkan hari, tanggal, dan tahun
+        //Format menyesuaikan bahasa device
+        val calendar: Calendar = Calendar.getInstance()
+        return DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime())
     }
 
     override fun onDestroy() {

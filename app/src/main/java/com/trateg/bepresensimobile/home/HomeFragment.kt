@@ -25,16 +25,16 @@ class HomeFragment: BaseFragment(), HomeContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Menampilkan hari,tanggal.tahun (kalau bisa ditaruh di presenter)
-        //Format internasional, belum format indonesia
-        val calendar: Calendar = Calendar.getInstance()
-        val currentDate: String = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime())
-        textViewDate.setText(currentDate)
+        updateTextDate()
     }
 
     override fun onDestroyView() {
         detachPresenter()
         super.onDestroyView()
+    }
+
+    override fun updateTextDate() {
+        tvTanggal.text = mPresenter?.getCurrentDate()
     }
 
     override fun attachPresenter(presenter: HomeContract.Presenter) {

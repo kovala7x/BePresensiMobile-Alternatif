@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewDate"
-        android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/bgColor">
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Date"
-        android:textSize="30sp" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_title"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="Home Title" />
-
-
-</RelativeLayout>
+        android:orientation="vertical"
+        >
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTanggal"
+            android:layout_marginTop="@dimen/def_margin_top"
+            android:layout_marginStart="@dimen/def_margin_left"
+            android:layout_marginEnd="@dimen/def_margin_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_full_date"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvKeteranganJadwal"
+            android:layout_marginTop="@dimen/def_margin_top"
+            android:layout_marginStart="@dimen/def_margin_left"
+            android:layout_marginEnd="@dimen/def_margin_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_keterangan"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvJadwalMahasiswa"
+            android:layout_marginTop="@dimen/def_margin_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_jadwal_mahasiswa"
+            />
+    </LinearLayout>
+</ScrollView>
