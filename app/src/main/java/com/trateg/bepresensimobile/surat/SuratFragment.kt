@@ -16,7 +16,7 @@ class SuratFragment: BaseFragment(),
     private var mPresenter: SuratContract.Presenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mRootView = inflater.inflate(R.layout.fragment_ajukan_surat, container, false)
+        mRootView = inflater.inflate(R.layout.fragment_surat, container, false)
         attachPresenter(SuratPresenter(this))
         return mRootView
     }
