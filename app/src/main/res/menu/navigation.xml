@@ -7,11 +7,6 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_profil"
-        android:icon="@drawable/tab_profil"
-        android:title="@string/title_profil" />
-
-    <item
         android:id="@+id/navigation_riwayat"
         android:icon="@drawable/tab_riwayat"
         android:title="@string/title_riwayat" />
@@ -20,5 +15,9 @@
         android:id="@+id/navigation_surat"
         android:icon="@drawable/tab_surat"
         android:title="@string/title_surat" />
+    <item
+        android:id="@+id/navigation_profil"
+        android:icon="@drawable/tab_profil"
+        android:title="@string/title_profil" />
 
 </menu>
