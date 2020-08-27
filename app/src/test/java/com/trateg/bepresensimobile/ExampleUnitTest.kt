@@ -1,4 +1,4 @@
-package com.trateg.sticker
+package com.trateg.bepresensimobile
 
 import org.junit.Test
 
