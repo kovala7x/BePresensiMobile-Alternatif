@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
-import kotlinx.android.synthetic.main.fragment_profil.*
 
 /**
  * Created by hanilozmen on 8/24/2019.
@@ -18,7 +16,7 @@ class SuratFragment: BaseFragment(),
     private var mPresenter: SuratContract.Presenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mRootView = inflater.inflate(R.layout.fragment_surat, container, false)
+        mRootView = inflater.inflate(R.layout.fragment_ajukan_surat, container, false)
         attachPresenter(SuratPresenter(this))
         return mRootView
     }

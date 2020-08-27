@@ -5,4 +5,43 @@
     <string name="title_riwayat">Riwayat</string>
     <string name="title_surat">Surat</string>
 
+    <string name="dummy_matakuliah">Dasar - Dasar Pemrograman</string>
+    <string name="dummy_waktu">07.00 – 08.40</string>
+    <string name="title_waktu">Waktu:</string>
+    <string name="title_dosen">Dosen:</string>
+    <string name="dummy_dosen">Santi Sundari</string>
+    <string name="title_hadir">Hadir:</string>
+    <string name="dummy_hadir">2 dari 2 sesi</string>
+    <string name="btn_presensi">Presensi</string>
+    <string name="btn_detail_presensi">Detail Presensi</string>
+    <string name="dummy_full_date">Senin, 30 Desember 2020</string>
+    <string name="dummy_keterangan">Terdapat 4 matakuliah hari ini</string>
+    <string name="dummy_date">1 Desember 2020</string>
+    <string name="dummy_surat_izin">Surat Izin</string>
+    <string name="title_kode">Kode:</string>
+    <string name="title_status">Status:</string>
+    <string name="dummy_kode_surat">SuratIzin0001</string>
+    <string name="dummy_status_surat">Berhasil diproses</string>
+    <string name="dummy_title_keterangan_surat">Terdapat 4 surat yang pernah diajukan</string>
+    <string name="content_foto_surat">Foto Surat Izin</string>
+    <string name="dummy_jenis_perkuliahan">Teori</string>
+    <string name="dummy_range">1 Desember 2020 – 2 Januari 2020</string>
+    <string name="tv_keterangan_riwayat">Riwayat kehadiran minggu ini pada tanggal: </string>
+    <string name="dummy_role_mahasiswa">Mahasiswa</string>
+    <string name="dummy_nama">Kovalevshero Al Fayyad Yafiano</string>
+    <string name="dummy_nim">171511014</string>
+    <string name="dummy_email">kovalevshero.al.tif17@polban.ac.id</string>
+    <string name="title_rekapitulasi_kehadiran">Rekapitulasi Kehadiran</string>
+    <string name="num_15">15</string>
+    <string name="title_sakit">Sakit</string>
+    <string name="title_izin">Izin</string>
+    <string name="num_4">4</string>
+    <string name="title_alfa">Alfa</string>
+    <string name="num_0">0</string>
+    <string name="title_status_only">Status</string>
+    <string name="dummy_status_aman">Aman</string>
+    <string name="title_atur_toleransi">Atur Toleransi Keterlambatan</string>
+    <string name="title_keluar">Keluar</string>
+    <string name="content_tambah_surat">Tambah Surat Baru</string>
+
 </resources>

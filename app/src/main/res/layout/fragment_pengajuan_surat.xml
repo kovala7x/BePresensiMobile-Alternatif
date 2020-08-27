@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColor">
+    <ScrollView
+        android:id="@+id/svSurat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="56dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvKeteranganSurat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/def_margin_left"
+                android:layout_marginTop="@dimen/def_margin_top"
+                android:layout_marginEnd="@dimen/def_margin_right"
+                android:text="@string/dummy_title_keterangan_surat"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSurat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/def_margin_top"
+                tools:listitem="@layout/item_surat_mahasiswa" />
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSuratBaru"
+        app:layout_anchor="@id/svSurat"
+        app:layout_anchorGravity="end|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/def_margin"
+        android:contentDescription="@string/content_tambah_surat"
+        app:srcCompat="@drawable/ic_baseline_add_24"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
