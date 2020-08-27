@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
@@ -101,7 +102,8 @@ object FragMan : FragManContract() {
             val requrestedTabFragment = mFragmentManager?.findFragmentByTag(
                 mHistory[index].last())
             if (activeFragment == null || requrestedTabFragment == null) return
-            mFragmentManager?.beginTransaction()?.hide(activeFragment)?.show(requrestedTabFragment)?.commitAllowingStateLoss()
+            if(activeFragment == requrestedTabFragment) return
+            mFragmentManager?.beginTransaction()?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)?.hide(activeFragment)?.show(requrestedTabFragment)?.commitAllowingStateLoss()
         }else {
             mBottomNavigationView?.selectedItemId =
                 getMenuItemId(index)
@@ -120,7 +122,8 @@ object FragMan : FragManContract() {
                 getActiveFragment(mCurrentTab)
             val previousFragment = mFragmentManager?.findFragmentByTag(currentTabHistory[currentTabHistory.size - 2])
             if(activeFragment == null || previousFragment == null) return false
-            mFragmentManager?.beginTransaction()?.remove(activeFragment)?.show(previousFragment)?.commitAllowingStateLoss()
+            if(activeFragment == previousFragment) return false
+            mFragmentManager?.beginTransaction()?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)?.remove(activeFragment)?.show(previousFragment)?.commitAllowingStateLoss()
             currentTabHistory.removeAt(currentTabHistory.size - 1)
             return false
         }else if(mCurrentTab != 0){
