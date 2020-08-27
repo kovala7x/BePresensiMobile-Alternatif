@@ -23,11 +23,6 @@ class RiwayatFragment: BaseFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val arg = arguments?.getString(RiwayatPresenter.KEY_TITLE,"")
-        text_title.text = arg
-        if(arg?.contains("Root") != true) {
-            mRootView.setBackgroundColor(ContextCompat.getColor(mRootView.context, R.color.colorOrange))
-        }
     }
 
     override fun onDestroyView() {

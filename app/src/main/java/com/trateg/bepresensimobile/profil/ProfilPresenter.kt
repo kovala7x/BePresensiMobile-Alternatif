@@ -7,7 +7,6 @@ import com.trateg.bepresensimobile.util.FragMan
 class ProfilPresenter(var mView: ProfilContract.View?):
     ProfilContract.Presenter {
     companion object {
-        const val KEY_TITLE: String = "KEY_TITLE"
         fun newInstance(args: Bundle? = null): BaseFragment {
             val fragment = ProfilFragment()
             args?.let {  fragment.arguments = it }

@@ -77,14 +77,10 @@ object FragMan : FragManContract() {
     }
 
     override fun initRootFragments() {
-        val homeFragment = HomePresenter.newInstance(Bundle().also {it.putString(
-            HomePresenter.KEY_TITLE,"Home Root") })
-        val profilFragment = ProfilPresenter.newInstance(Bundle().also { it.putString(
-            ProfilPresenter.KEY_TITLE,"Profil Root")})
-        val riwayatFragment = RiwayatPresenter.newInstance(Bundle().also { it.putString(
-            RiwayatPresenter.KEY_TITLE,"Riwayat Root")})
-        val suratFragment = SuratPresenter.newInstance(Bundle().also { it.putString(
-            RiwayatPresenter.KEY_TITLE,"Surat Root")})
+        val homeFragment = HomePresenter.newInstance(Bundle())
+        val profilFragment = ProfilPresenter.newInstance(Bundle())
+        val riwayatFragment = RiwayatPresenter.newInstance(Bundle())
+        val suratFragment = SuratPresenter.newInstance(Bundle())
         var tabRootFragments = ArrayList<BaseFragment>()
         tabRootFragments.add(profilFragment)
         tabRootFragments.add(riwayatFragment)

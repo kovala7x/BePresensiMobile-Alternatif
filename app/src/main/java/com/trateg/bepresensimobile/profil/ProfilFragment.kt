@@ -22,11 +22,6 @@ class ProfilFragment: BaseFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val arg = arguments?.getString(ProfilPresenter.KEY_TITLE,"")
-        text_title.text = arg
-        if(arg?.contains("Root") != true) {
-            mRootView.setBackgroundColor(ContextCompat.getColor(mRootView.context, R.color.colorPrimaryDark))
-        }
     }
 
     override fun onDestroyView() {

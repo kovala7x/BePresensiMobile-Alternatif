@@ -7,7 +7,6 @@ import com.trateg.bepresensimobile.util.FragMan
 class SuratPresenter(var mView: SuratContract.View?):
     SuratContract.Presenter {
     companion object {
-        const val KEY_TITLE: String = "KEY_TITLE"
         fun newInstance(args: Bundle? = null): BaseFragment {
             val fragment = SuratFragment()
             args?.let {  fragment.arguments = it }

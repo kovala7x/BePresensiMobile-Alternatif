@@ -24,11 +24,6 @@ class HomeFragment: BaseFragment(), HomeContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val arg = arguments?.getString(HomePresenter.KEY_TITLE,"")
-        if(arg?.contains("Root") != true) {
-            mRootView.setBackgroundColor(ContextCompat.getColor(mRootView.context, R.color.colorAccent))
-        }
-        text_title.text = arg
 
         //Menampilkan hari,tanggal.tahun (kalau bisa ditaruh di presenter)
         //Format internasional, belum format indonesia

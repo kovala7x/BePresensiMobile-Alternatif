@@ -10,8 +10,6 @@ class HomePresenter(var mView: HomeContract.View?) :
     HomeContract.Presenter {
 
     companion object{
-        const val KEY_TITLE: String = "KEY_TITLE"
-
         fun newInstance(args: Bundle? = null): BaseFragment {
             val fragment = HomeFragment()
             args?.let { fragment.arguments = it }
