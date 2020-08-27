@@ -18,11 +18,12 @@ class HomePresenter(var mView: HomeContract.View?) :
         }
     }
 
-    override fun getCurrentDate(): String {
+    override fun assignCurrentDate() {
         //Menampilkan hari, tanggal, dan tahun
         //Format menyesuaikan bahasa device
         val calendar: Calendar = Calendar.getInstance()
-        return DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime())
+        val currentDate:String = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime())
+        mView?.updateTextDate(currentDate)
     }
 
     override fun onDestroy() {

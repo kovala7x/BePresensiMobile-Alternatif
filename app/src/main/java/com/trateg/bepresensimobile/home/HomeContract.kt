@@ -5,10 +5,10 @@ import com.trateg.bepresensimobile.BaseView
 
 interface HomeContract{
     interface Presenter: BasePresenter {
-        fun getCurrentDate(): String
+        fun assignCurrentDate()
     }
 
     interface View: BaseView<Presenter> {
-        fun updateTextDate()
+        fun updateTextDate(date: String)
     }
 }

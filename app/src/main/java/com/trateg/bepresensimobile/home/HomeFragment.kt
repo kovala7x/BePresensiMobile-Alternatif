@@ -25,7 +25,7 @@ class HomeFragment: BaseFragment(), HomeContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        updateTextDate()
+        mPresenter?.assignCurrentDate()
     }
 
     override fun onDestroyView() {
@@ -33,8 +33,8 @@ class HomeFragment: BaseFragment(), HomeContract.View {
         super.onDestroyView()
     }
 
-    override fun updateTextDate() {
-        tvTanggal.text = mPresenter?.getCurrentDate()
+    override fun updateTextDate(date: String) {
+        tvTanggal.text = date
     }
 
     override fun attachPresenter(presenter: HomeContract.Presenter) {
