@@ -43,5 +43,6 @@
     <string name="title_atur_toleransi">Atur Toleransi Keterlambatan</string>
     <string name="title_keluar">Keluar</string>
     <string name="content_tambah_surat">Tambah Surat Baru</string>
+    <string name="title_pilih_jenis_surat">Silahkan pilih jenis surat</string>
 
 </resources>

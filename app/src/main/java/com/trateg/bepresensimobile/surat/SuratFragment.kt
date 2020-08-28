@@ -1,11 +1,14 @@
 package com.trateg.bepresensimobile.surat
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
+import com.trateg.bepresensimobile.ajukan_surat.AjukanSuratActivity
+import kotlinx.android.synthetic.main.fragment_surat.*
 
 /**
  * Created by hanilozmen on 8/24/2019.
@@ -23,6 +26,9 @@ class SuratFragment: BaseFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fabSuratBaru.setOnClickListener {
+            startActivity(Intent(it.context,AjukanSuratActivity::class.java))
+        }
     }
 
     override fun onDestroyView() {
