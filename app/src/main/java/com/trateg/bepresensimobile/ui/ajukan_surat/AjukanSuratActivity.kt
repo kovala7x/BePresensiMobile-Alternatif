@@ -1,4 +1,4 @@
-package com.trateg.bepresensimobile.ajukan_surat
+package com.trateg.bepresensimobile.ui.ajukan_surat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

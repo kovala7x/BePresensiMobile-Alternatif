@@ -1,22 +1,21 @@
-package com.trateg.bepresensimobile.profil
+package com.trateg.bepresensimobile.ui.riwayat
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
-import kotlinx.android.synthetic.main.fragment_profil.*
 
-class ProfilFragment: BaseFragment(),
-    ProfilContract.View {
+class RiwayatFragment: BaseFragment(),
+    RiwayatContract.View {
+    private var mPresenter: RiwayatContract.Presenter? = null
+
     private lateinit var mRootView : View
-    private var mPresenter: ProfilContract.Presenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mRootView = inflater.inflate(R.layout.fragment_profil, container, false)
-        attachPresenter(ProfilPresenter(this))
+        mRootView = inflater.inflate(R.layout.fragment_riwayat, container, false)
+        attachPresenter(RiwayatPresenter(this))
         return mRootView
     }
 
@@ -29,7 +28,7 @@ class ProfilFragment: BaseFragment(),
         super.onDestroyView()
     }
 
-    override fun attachPresenter(presenter: ProfilContract.Presenter) {
+    override fun attachPresenter(presenter: RiwayatContract.Presenter) {
         mPresenter = presenter
     }
 

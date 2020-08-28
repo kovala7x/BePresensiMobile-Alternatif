@@ -8,10 +8,10 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
-import com.trateg.bepresensimobile.home.HomePresenter
-import com.trateg.bepresensimobile.profil.ProfilPresenter
-import com.trateg.bepresensimobile.riwayat.RiwayatPresenter
-import com.trateg.bepresensimobile.surat.SuratPresenter
+import com.trateg.bepresensimobile.ui.home.HomePresenter
+import com.trateg.bepresensimobile.ui.profil.ProfilPresenter
+import com.trateg.bepresensimobile.ui.riwayat.RiwayatPresenter
+import com.trateg.bepresensimobile.ui.surat.SuratPresenter
 import java.io.Serializable
 
 object FragMan : FragManContract() {

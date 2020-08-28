@@ -1,28 +1,28 @@
-package com.trateg.bepresensimobile.riwayat
+package com.trateg.bepresensimobile.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class RiwayatFragment: BaseFragment(),
-    RiwayatContract.View {
-    private var mPresenter: RiwayatContract.Presenter? = null
+class HomeFragment: BaseFragment(), HomeContract.View {
+    private var mPresenter: HomeContract.Presenter? = null
 
     private lateinit var mRootView : View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mRootView = inflater.inflate(R.layout.fragment_riwayat, container, false)
-        attachPresenter(RiwayatPresenter(this))
+        mRootView = inflater.inflate(R.layout.fragment_home, container, false)
+        attachPresenter(HomePresenter(this))
         return mRootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mPresenter?.assignCurrentDate()
     }
 
     override fun onDestroyView() {
@@ -30,7 +30,11 @@ class RiwayatFragment: BaseFragment(),
         super.onDestroyView()
     }
 
-    override fun attachPresenter(presenter: RiwayatContract.Presenter) {
+    override fun updateTextDate(date: String) {
+        tvTanggal.text = date
+    }
+
+    override fun attachPresenter(presenter: HomeContract.Presenter) {
         mPresenter = presenter
     }
 

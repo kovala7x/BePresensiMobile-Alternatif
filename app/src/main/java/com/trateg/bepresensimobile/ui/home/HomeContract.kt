@@ -1,4 +1,4 @@
-package com.trateg.bepresensimobile.home
+package com.trateg.bepresensimobile.ui.home
 
 import com.trateg.bepresensimobile.BasePresenter
 import com.trateg.bepresensimobile.BaseView

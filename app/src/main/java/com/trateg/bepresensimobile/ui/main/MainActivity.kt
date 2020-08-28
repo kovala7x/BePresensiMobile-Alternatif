@@ -1,13 +1,10 @@
-package com.trateg.bepresensimobile.main
+package com.trateg.bepresensimobile.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.trateg.bepresensimobile.BaseActivity
 import com.trateg.bepresensimobile.R
-import com.trateg.bepresensimobile.home.HomePresenter
-import com.trateg.bepresensimobile.profil.ProfilPresenter
-import com.trateg.bepresensimobile.riwayat.RiwayatPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), MainContract.View {

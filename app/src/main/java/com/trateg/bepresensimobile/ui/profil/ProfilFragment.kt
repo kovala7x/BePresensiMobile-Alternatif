@@ -1,34 +1,25 @@
-package com.trateg.bepresensimobile.surat
+package com.trateg.bepresensimobile.ui.profil
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
-import com.trateg.bepresensimobile.ajukan_surat.AjukanSuratActivity
-import kotlinx.android.synthetic.main.fragment_surat.*
 
-/**
- * Created by hanilozmen on 8/24/2019.
- */
-class SuratFragment: BaseFragment(),
-    SuratContract.View {
+class ProfilFragment: BaseFragment(),
+    ProfilContract.View {
     private lateinit var mRootView : View
-    private var mPresenter: SuratContract.Presenter? = null
+    private var mPresenter: ProfilContract.Presenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mRootView = inflater.inflate(R.layout.fragment_surat, container, false)
-        attachPresenter(SuratPresenter(this))
+        mRootView = inflater.inflate(R.layout.fragment_profil, container, false)
+        attachPresenter(ProfilPresenter(this))
         return mRootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fabSuratBaru.setOnClickListener {
-            startActivity(Intent(it.context,AjukanSuratActivity::class.java))
-        }
     }
 
     override fun onDestroyView() {
@@ -36,7 +27,7 @@ class SuratFragment: BaseFragment(),
         super.onDestroyView()
     }
 
-    override fun attachPresenter(presenter: SuratContract.Presenter) {
+    override fun attachPresenter(presenter: ProfilContract.Presenter) {
         mPresenter = presenter
     }
 

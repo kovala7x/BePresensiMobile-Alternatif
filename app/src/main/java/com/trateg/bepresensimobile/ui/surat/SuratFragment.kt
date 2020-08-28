@@ -1,31 +1,34 @@
-package com.trateg.bepresensimobile.home
+package com.trateg.bepresensimobile.ui.surat
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
-import kotlinx.android.synthetic.main.fragment_home.*
-import java.text.DateFormat
-import java.util.*
+import com.trateg.bepresensimobile.ui.ajukan_surat.AjukanSuratActivity
+import kotlinx.android.synthetic.main.fragment_surat.*
 
-class HomeFragment: BaseFragment(), HomeContract.View {
-    private var mPresenter: HomeContract.Presenter? = null
-
+/**
+ * Created by hanilozmen on 8/24/2019.
+ */
+class SuratFragment: BaseFragment(),
+    SuratContract.View {
     private lateinit var mRootView : View
+    private var mPresenter: SuratContract.Presenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mRootView = inflater.inflate(R.layout.fragment_home, container, false)
-        attachPresenter(HomePresenter(this))
+        mRootView = inflater.inflate(R.layout.fragment_surat, container, false)
+        attachPresenter(SuratPresenter(this))
         return mRootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        mPresenter?.assignCurrentDate()
+        fabSuratBaru.setOnClickListener {
+            startActivity(Intent(it.context,AjukanSuratActivity::class.java))
+        }
     }
 
     override fun onDestroyView() {
@@ -33,11 +36,7 @@ class HomeFragment: BaseFragment(), HomeContract.View {
         super.onDestroyView()
     }
 
-    override fun updateTextDate(date: String) {
-        tvTanggal.text = date
-    }
-
-    override fun attachPresenter(presenter: HomeContract.Presenter) {
+    override fun attachPresenter(presenter: SuratContract.Presenter) {
         mPresenter = presenter
     }
 

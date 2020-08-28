@@ -1,9 +1,9 @@
-package com.trateg.bepresensimobile.profil
+package com.trateg.bepresensimobile.ui.surat
 
 import com.trateg.bepresensimobile.BasePresenter
 import com.trateg.bepresensimobile.BaseView
 
-interface ProfilContract{
+interface SuratContract{
     interface Presenter: BasePresenter {
         fun onViewCreated()
     }

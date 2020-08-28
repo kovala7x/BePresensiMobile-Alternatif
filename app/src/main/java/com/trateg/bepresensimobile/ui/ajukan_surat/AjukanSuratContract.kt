@@ -1,4 +1,4 @@
-package com.trateg.bepresensimobile.ajukan_surat
+package com.trateg.bepresensimobile.ui.ajukan_surat
 
 import com.trateg.bepresensimobile.BasePresenter
 import com.trateg.bepresensimobile.BaseView

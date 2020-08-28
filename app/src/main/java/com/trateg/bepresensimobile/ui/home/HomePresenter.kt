@@ -1,8 +1,7 @@
-package com.trateg.bepresensimobile.home
+package com.trateg.bepresensimobile.ui.home
 
 import android.os.Bundle
 import com.trateg.bepresensimobile.BaseFragment
-import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.DateFormat
 import java.util.*
 

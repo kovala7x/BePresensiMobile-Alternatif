@@ -1,8 +1,7 @@
-package com.trateg.bepresensimobile.riwayat
+package com.trateg.bepresensimobile.ui.riwayat
 
 import android.os.Bundle
 import com.trateg.bepresensimobile.BaseFragment
-import com.trateg.bepresensimobile.util.FragMan
 
 class RiwayatPresenter(var mView: RiwayatContract.View?) :
     RiwayatContract.Presenter {

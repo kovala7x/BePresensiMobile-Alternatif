@@ -1,14 +1,13 @@
-package com.trateg.bepresensimobile.profil
+package com.trateg.bepresensimobile.ui.surat
 
 import android.os.Bundle
 import com.trateg.bepresensimobile.BaseFragment
-import com.trateg.bepresensimobile.util.FragMan
 
-class ProfilPresenter(var mView: ProfilContract.View?):
-    ProfilContract.Presenter {
+class SuratPresenter(var mView: SuratContract.View?):
+    SuratContract.Presenter {
     companion object {
         fun newInstance(args: Bundle? = null): BaseFragment {
-            val fragment = ProfilFragment()
+            val fragment = SuratFragment()
             args?.let {  fragment.arguments = it }
             return fragment
         }
@@ -19,6 +18,6 @@ class ProfilPresenter(var mView: ProfilContract.View?):
     }
 
     override fun onViewCreated() {
-        // TODO do network calls, db operations etc.
+
     }
 }

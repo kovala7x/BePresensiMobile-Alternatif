@@ -1,4 +1,4 @@
-package com.trateg.bepresensimobile.riwayat
+package com.trateg.bepresensimobile.ui.riwayat
 
 import com.trateg.bepresensimobile.BasePresenter
 import com.trateg.bepresensimobile.BaseView

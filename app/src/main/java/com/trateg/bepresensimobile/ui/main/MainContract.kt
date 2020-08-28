@@ -1,4 +1,4 @@
-package com.trateg.bepresensimobile.main
+package com.trateg.bepresensimobile.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
