@@ -11,18 +11,6 @@
         >
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_marginTop="@dimen/def_margin_top"
-            android:layout_marginStart="@dimen/def_margin_left"
-            android:layout_marginEnd="@dimen/def_margin_right"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_keterangan_riwayat"
-            android:textAlignment="center"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="?android:attr/textColorSecondary"
-            />
-
-        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvTanggalRiwayat"
             android:layout_marginTop="@dimen/def_margin_near"
             android:layout_marginStart="@dimen/def_margin_left"
@@ -36,6 +24,19 @@
             android:textAlignment="center"
             android:textAppearance="?attr/textAppearanceHeadline6"
             />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_marginTop="@dimen/def_margin_top"
+            android:layout_marginStart="@dimen/def_margin_left"
+            android:layout_marginEnd="@dimen/def_margin_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_keterangan_riwayat"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRiwayat"
             android:layout_marginTop="@dimen/def_margin_top"
