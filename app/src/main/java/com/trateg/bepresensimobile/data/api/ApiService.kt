@@ -8,6 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ApiService {
+    @Headers({"Accept: application/json"})
     @GET("jadwal/mahasiswa/{nim}")
     suspend fun getJadwal(@Path("nim") nim :String) : BaseResponse
 }
