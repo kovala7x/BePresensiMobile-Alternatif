@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.data.api.ApiFactory
 import com.trateg.bepresensimobile.model.BaseResponse
+import com.trateg.bepresensimobile.model.BaseResponseList
 import com.trateg.bepresensimobile.util.Constants
 import kotlinx.coroutines.*
 import retrofit2.await
@@ -40,7 +41,7 @@ class HomePresenter(var mView: HomeContract.View?) :
         GlobalScope.launch(Dispatchers.IO) {
             try { // Menghindari exception not handled
 
-                lateinit var response: BaseResponse
+                lateinit var response: BaseResponseList
 
                 // Memastikan bahwa request jaringan tidak melebihi timeout
                 withContext(Dispatchers.Main) {

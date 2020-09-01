@@ -11,3 +11,12 @@ data class BaseResponse(
     @SerializedName("success")
     val success: Boolean?
 )
+
+data class BaseResponseList(
+    @SerializedName("data")
+    val data: ListData?,
+    @SerializedName("message")
+    val message: String?,
+    @SerializedName("success")
+    val success: Boolean?
+)
