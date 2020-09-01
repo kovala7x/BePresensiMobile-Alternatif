@@ -44,5 +44,9 @@
     <string name="title_keluar">Keluar</string>
     <string name="content_tambah_surat">Tambah Surat Baru</string>
     <string name="title_pilih_jenis_surat">Silahkan pilih jenis surat</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="label_login">Login</string>
+    <string name="label_lupa_password">Lupa password?</string>
 
 </resources>

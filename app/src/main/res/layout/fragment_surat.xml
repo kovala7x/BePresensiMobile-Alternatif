@@ -38,6 +38,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabSuratBaru"
         app:layout_anchor="@id/svSurat"
+        app:backgroundTint="@color/colorSecondary"
         app:layout_anchorGravity="end|bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
