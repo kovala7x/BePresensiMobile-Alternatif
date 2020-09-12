@@ -1,12 +1,18 @@
 package com.trateg.bepresensimobile.data.api
 
 import com.trateg.bepresensimobile.model.BaseResponseList
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Path
+import okhttp3.RequestBody
+import retrofit2.Response
+import retrofit2.http.*
 
 interface ApiService {
     @Headers("Accept: application/json")
-    @GET("jadwal/mahasiswa/{nim}")
+    @GET("mobile/jadwal/mahasiswa/{nim}")
     suspend fun getJadwal(@Path("nim") nim :String) : BaseResponseList
+
+    @Multipart
+    @Headers("Accept: application/json")
+    @POST("login")
+    suspend fun postLogin(@Part("email") email: RequestBody,
+                          @Part("password") password: RequestBody) : Response<BaseResponseList>
 }

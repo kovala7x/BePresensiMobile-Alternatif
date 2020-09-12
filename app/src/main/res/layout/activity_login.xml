@@ -1,93 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="400dp"
-            android:layout_marginTop="-190dp"
-            android:background="@drawable/circle">
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_marginTop="-190dp"
+                android:background="@drawable/circle">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="@dimen/def_margin_left"
+                    android:layout_marginTop="@dimen/def_margin_top"
+                    android:layout_marginEnd="@dimen/def_margin_right"
+                    android:layout_marginBottom="88dp"
+                    android:fontFamily="@font/light"
+                    android:text="BePresensi"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="40sp" />
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputEmail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/def_margin_near"
+                android:layout_marginTop="@dimen/def_margin"
+                android:layout_marginEnd="@dimen/def_margin_near"
+                android:hint="@string/label_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/def_margin_near"
+                android:layout_marginTop="@dimen/def_margin"
+                android:layout_marginEnd="@dimen/def_margin_near"
+                android:hint="@string/label_password"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/def_margin"
+                android:background="@drawable/login_button"
+                android:text="@string/label_login"
+                app:backgroundTint="@color/colorSecondary" />
+
             <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
+                android:id="@+id/tvLupaPassword"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/def_margin_left"
-                android:layout_marginTop="@dimen/def_margin_top"
-                android:layout_marginEnd="@dimen/def_margin_right"
-                android:layout_marginBottom="88dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/def_margin_near"
+                android:layout_marginTop="@dimen/def_margin_near"
+                android:layout_marginEnd="@dimen/def_margin_near"
+                android:layout_marginBottom="@dimen/def_margin_near"
                 android:fontFamily="@font/light"
-                android:text="BePresensi"
-                android:textAlignment="center"
-                android:textColor="@color/colorWhite"
-                android:textSize="40sp" />
-        </RelativeLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputEmail"
-            android:layout_marginTop="@dimen/def_margin"
-            android:layout_marginStart="@dimen/def_margin_near"
-            android:layout_marginEnd="@dimen/def_margin_near"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/label_email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputPassword"
-            android:layout_marginTop="@dimen/def_margin"
-            android:layout_marginStart="@dimen/def_margin_near"
-            android:layout_marginEnd="@dimen/def_margin_near"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:endIconMode="password_toggle"
-            android:hint="@string/label_password"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:imeOptions="actionGo"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogin"
-            android:background="@drawable/login_button"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/def_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@color/colorSecondary"
-            android:text="@string/label_login"
-            />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvLupaPassword"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/def_margin_near"
-            android:layout_marginTop="@dimen/def_margin_near"
-            android:layout_marginEnd="@dimen/def_margin_near"
-            android:layout_marginBottom="@dimen/def_margin_near"
-            android:text="@string/label_lupa_password"
-            android:fontFamily="@font/light"
-            />
-    </LinearLayout>
-</ScrollView>
+                android:text="@string/label_lupa_password" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

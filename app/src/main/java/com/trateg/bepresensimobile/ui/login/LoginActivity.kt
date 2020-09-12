@@ -1,16 +1,17 @@
 package com.trateg.bepresensimobile.ui.login
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import androidx.core.widget.doOnTextChanged
 import com.google.android.material.snackbar.Snackbar
 import com.trateg.bepresensimobile.BaseActivity
 import com.trateg.bepresensimobile.R
-import com.trateg.bepresensimobile.ui.ajukan_surat.AjukanSuratActivity
 import com.trateg.bepresensimobile.ui.main.MainActivity
-import com.trateg.bepresensimobile.ui.main.MainContract
+import com.trateg.bepresensimobile.util.SessionManager
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.coroutines.*
 
 class LoginActivity : BaseActivity(), LoginContract.View {
 
@@ -23,25 +24,104 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         init()
     }
 
-    private fun init(){
+    private fun init() {
+        mPresenter?.setupSession()
         btnLogin.setOnClickListener {
-            Snackbar.make(it,"Melakukan login...",Snackbar.LENGTH_LONG).show()
-            GlobalScope.launch {
-                delay(2000L)
-                withContext(Dispatchers.Main){
-                    startActivity(Intent(it.context, MainActivity::class.java))
-                    finish()
-                }
+            hideSoftKeyboard()
+            // BELUM BERES
+            if (isFormEmailValid() && isFormPaswordValid()) {
+                mPresenter?.doLogin(
+                    email = inputEmail.editText?.text.toString(),
+                    password = inputPassword.editText?.text.toString()
+                )
+            } else {
+                Snackbar.make(it, "Periksa kembali form!", Snackbar.LENGTH_SHORT).show()
             }
         }
         tvLupaPassword.setOnClickListener {
-            Snackbar.make(it,"Silahkan hubungi staff tata usaha...",Snackbar.LENGTH_LONG).show()
+            Snackbar.make(it, "Silahkan hubungi staff tata usaha...", Snackbar.LENGTH_LONG).show()
         }
+
+        inputEmail.editText?.doOnTextChanged { text, start, before, count ->
+            inputEmail.error = null
+        }
+
+        inputPassword.editText?.doOnTextChanged { text, start, before, count ->
+            inputPassword.error = null
+        }
+
+        inputPassword.editText?.setOnEditorActionListener { textView, i, keyEvent ->
+            if (i == EditorInfo.IME_ACTION_DONE) {
+                btnLogin.callOnClick()
+                true
+            } else {
+                false
+            }
+        }
+
+        swipeRefreshLogin.isEnabled = false
     }
 
     override fun onDestroy() {
         detachPresenter()
         super.onDestroy()
+    }
+
+    override fun getEmail(): String {
+        return inputEmail.editText?.text.toString()
+    }
+
+    override fun getPassword(): String {
+        return inputPassword.editText?.text.toString()
+    }
+
+    override fun onError(msg: String) {
+        Snackbar.make(swipeRefreshLogin, msg, Snackbar.LENGTH_INDEFINITE)
+            .setAction("TUTUP") {
+                // tutup snackbar
+                // biarkan kosong
+            }.show()
+    }
+
+    override fun isFormEmailValid(): Boolean {
+        var valid = true
+        inputEmail.error = null
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(inputEmail.editText?.text.toString())
+                .matches()
+        ) {
+            // jika input email bukan merupakan email
+            valid = false
+            inputEmail.error = "Email tidak valid!"
+        }
+        return valid
+    }
+
+    override fun isFormPaswordValid(): Boolean {
+        var valid = true
+        inputPassword.error = null
+        if (inputPassword.editText?.text!!.toString().length < 6) {
+            // jika input password kurang dari 6 karakter
+            valid = false
+            inputPassword.error = "Password tidak boleh kurang dari 6 karakter!"
+        }
+        return valid
+    }
+
+    override fun hideSoftKeyboard() {
+        val view = this.currentFocus
+        view?.let { v ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.hideSoftInputFromWindow(v.windowToken, 0)
+        }
+    }
+
+    override fun goToHome() {
+        finish()
+        startActivity(Intent(baseContext, MainActivity::class.java))
+    }
+
+    override fun initSession(): SessionManager {
+        return SessionManager(baseContext)
     }
 
     override fun attachPresenter(presenter: LoginContract.Presenter) {
@@ -54,8 +134,18 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun showProgress() {
+        btnLogin.isEnabled = false
+        swipeRefreshLogin.let {
+            it.isEnabled = true
+            it.isRefreshing = true
+        }
     }
 
     override fun hideProgress() {
+        btnLogin.isEnabled = true
+        swipeRefreshLogin.let {
+            it.isRefreshing = false
+            it.isEnabled = false
+        }
     }
 }
