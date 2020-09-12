@@ -116,8 +116,8 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun goToHome() {
-        finish()
         startActivity(Intent(baseContext, MainActivity::class.java))
+        finish()
     }
 
     override fun initSession(): SessionManager {
