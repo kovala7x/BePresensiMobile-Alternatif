@@ -7,12 +7,13 @@ data class Data(
     @SerializedName("jadwal")
     val jadwal: Jadwal?,
     @SerializedName("auth")
-    val auth: Auth?
+    val auth: Auth?,
+    @SerializedName("rekapitulasi")
+    val rekapitulasi: Rekapitulasi?
 )
 
 data class ListData(
     @SerializedName("jadwal")
-    val jadwal: List<Jadwal>?,
-    @SerializedName("auth")
-    val auth: List<Auth>?
+    val jadwal: List<Jadwal>?
+
 )

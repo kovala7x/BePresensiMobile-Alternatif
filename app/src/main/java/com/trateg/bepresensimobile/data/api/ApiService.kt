@@ -1,5 +1,6 @@
 package com.trateg.bepresensimobile.data.api
 
+import com.trateg.bepresensimobile.model.BaseResponse
 import com.trateg.bepresensimobile.model.BaseResponseList
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -14,5 +15,9 @@ interface ApiService {
     @Headers("Accept: application/json")
     @POST("login")
     suspend fun postLogin(@Part("email") email: RequestBody,
-                          @Part("password") password: RequestBody) : Response<BaseResponseList>
+                          @Part("password") password: RequestBody) : Response<BaseResponse>
+
+    @Headers("Accept: application/json")
+    @GET("mobile/rekapitulasi-kehadiran/detail/{nim}")
+    suspend fun getRekap(@Path("nim") nim :String) : Response<BaseResponse>
 }

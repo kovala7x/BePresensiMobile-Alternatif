@@ -5,7 +5,7 @@ import android.util.Log
 import com.auth0.android.jwt.JWT
 import com.trateg.bepresensimobile.data.api.ApiFactory
 import com.trateg.bepresensimobile.model.Auth
-import com.trateg.bepresensimobile.model.BaseResponseList
+import com.trateg.bepresensimobile.model.BaseResponse
 import com.trateg.bepresensimobile.util.Constants
 import com.trateg.bepresensimobile.util.ErrorUtils
 import com.trateg.bepresensimobile.util.SessionManager
@@ -23,7 +23,7 @@ class LoginPresenter(private var mView: LoginContract.View?) :
 
         val mEmail: RequestBody = email.toRequestBody(email.toMediaTypeOrNull())
         val mPassword: RequestBody = password.toRequestBody(password.toMediaTypeOrNull())
-        var response: Response<BaseResponseList>? = null
+        var response: Response<BaseResponse>? = null
         GlobalScope.launch(Dispatchers.IO){
         // Menampilkan loading
             withContext(Dispatchers.Main) {
@@ -55,7 +55,7 @@ class LoginPresenter(private var mView: LoginContract.View?) :
                     }
 
                     !response!!.isSuccessful -> { // Jika request gagal
-                        val errorResponse = ErrorUtils.parseErrorList(response!!)
+                        val errorResponse = ErrorUtils.parseError(response!!)
                         withContext(Dispatchers.Main) {
                             Log.d(TAG, "doLogin: " + errorResponse.message!!.toString())
                             mView?.onError(errorResponse.message!!.toString())
@@ -78,7 +78,7 @@ class LoginPresenter(private var mView: LoginContract.View?) :
 
                     response!!.body()!!.success!! -> { // Jika request berhasil
                         withContext(Dispatchers.Main){
-                            onLoginSuccess(response!!.body()!!.data?.auth?.first()!!)
+                            onLoginSuccess(response!!.body()!!.data?.auth!!)
                         }
                     }
 
