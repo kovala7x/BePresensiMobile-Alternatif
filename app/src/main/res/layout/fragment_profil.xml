@@ -1,271 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipeRefreshProfil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <!-- Card Profil -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardProfil"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/def_margin_near"
-            android:layout_marginTop="@dimen/def_margin"
-            android:layout_marginEnd="@dimen/def_margin_near"
-            app:cardElevation="4dp">
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <!-- Card Profil -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <!-- Foto Profil -->
-                <ImageView
-                    android:id="@+id/imgFoto"
-                    android:layout_width="120dp"
-                    android:layout_height="160dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:contentDescription="@string/content_foto_surat"
-                    android:src="@color/colorAccent" />
+                android:layout_marginStart="@dimen/def_margin_near"
+                android:layout_marginTop="@dimen/def_margin"
+                android:layout_marginEnd="@dimen/def_margin_near"
+                app:cardElevation="4dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/imgFoto"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Role User -->
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvRole"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:singleLine="true"
-                        android:text="@string/dummy_role_mahasiswa"
-                        android:textAppearance="?attr/textAppearanceOverline" />
-
-                    <!-- Nama User -->
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvNama"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="2"
-                        android:scrollHorizontally="true"
-                        android:text="@string/dummy_nama"
-                        android:textAppearance="?attr/textAppearanceHeadline5" />
-
-                    <!-- NIM User -->
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chipIDUser"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dummy_nim" />
-                </LinearLayout>
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Email User -->
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/def_margin_top"
-            android:ellipsize="middle"
-            android:singleLine="true"
-            android:text="@string/dummy_email"
-            app:chipIcon="@drawable/ic_baseline_email" />
-
-
-        <!-- Rekap com.jtk.bepresensi.models.Kehadiran -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvRekap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/def_margin_near"
-            android:layout_marginTop="@dimen/def_margin_top"
-            android:layout_marginEnd="@dimen/def_margin_near"
-            android:text="@string/title_rekapitulasi_kehadiran"
-            android:textAppearance="?attr/textAppearanceBody2" />
-
-        <TableLayout
-            android:id="@+id/layoutRekap"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:stretchColumns="*"
-            android:layout_margin="@dimen/def_margin_near">
-
-            <TableRow
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-
-                <!-- Card Rekap Sakit -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp">
+                    android:orientation="horizontal">
+                    <!-- Foto Profil -->
+                    <ImageView
+                        android:id="@+id/imgFoto"
+                        android:layout_width="120dp"
+                        android:layout_height="160dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/content_foto_surat"
+                        android:src="@color/colorAccent" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/imgFoto"
                         android:orientation="vertical"
-                        android:padding="@dimen/def_margin_near">
+                        android:padding="16dp">
 
+                        <!-- Role User -->
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvRole"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
                             android:singleLine="true"
-                            android:text="@string/title_sakit"
-                            android:textAppearance="?attr/textAppearanceBody2" />
+                            android:text="@string/dummy_role_mahasiswa"
+                            android:textAppearance="?attr/textAppearanceOverline" />
 
+                        <!-- Nama User -->
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tvJumlahSakit"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="marquee"
-                            android:marqueeRepeatLimit="marquee_forever"
-                            android:scrollHorizontally="true"
-                            android:singleLine="true"
-                            android:text="@string/num_15"
-                            android:textAppearance="?attr/textAppearanceHeadline4" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Card Rekap Izin -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="@dimen/def_margin_near">
-
-                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvNama"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
-                            android:singleLine="true"
-                            android:text="@string/title_izin"
-                            android:textAppearance="?attr/textAppearanceBody2" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tvJumlahIzin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="marquee"
-                            android:marqueeRepeatLimit="marquee_forever"
+                            android:maxLines="2"
                             android:scrollHorizontally="true"
-                            android:singleLine="true"
-                            android:text="@string/num_4"
-                            android:textAppearance="?attr/textAppearanceHeadline4" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </TableRow>
+                            android:text="@string/dummy_nama"
+                            android:textAppearance="?attr/textAppearanceHeadline5" />
 
-            <TableRow
-                android:layout_width="0dp"
+                        <!-- NIM User -->
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipIDUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dummy_nim" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Email User -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/def_margin_top"
+                android:ellipsize="middle"
+                android:singleLine="true"
+                android:text="@string/dummy_email"
+                app:chipIcon="@drawable/ic_baseline_email" />
+
+
+            <!-- Rekap com.jtk.bepresensi.models.Kehadiran -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvRekap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/def_margin_near"
+                android:layout_marginTop="@dimen/def_margin_top"
+                android:layout_marginEnd="@dimen/def_margin_near"
+                android:text="@string/title_rekapitulasi_kehadiran"
+                android:textAppearance="?attr/textAppearanceBody2" />
+
+            <TableLayout
+                android:id="@+id/layoutRekap"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/def_margin_near">
+                android:layout_margin="@dimen/def_margin_near"
+                android:stretchColumns="*">
 
-                <!-- Card Rekap Alfa -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp">
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <!-- Card Rekap Sakit -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="@dimen/def_margin_near">
+                        android:layout_marginEnd="4dp">
 
-                        <!-- Title and secondary text -->
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:singleLine="true"
-                            android:text="@string/title_alfa"
-                            android:textAppearance="?attr/textAppearanceBody2" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tvJumlahAlfa"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:ellipsize="marquee"
-                            android:marqueeRepeatLimit="marquee_forever"
-                            android:scrollHorizontally="true"
-                            android:singleLine="true"
-                            android:text="@string/num_0"
-                            android:textAppearance="?attr/textAppearanceHeadline4" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
 
-                <!-- Card Status Rekap -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/title_sakit"
+                                android:textAppearance="?attr/textAppearanceBody2" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvJumlahSakit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/num_15"
+                                android:textAppearance="?attr/textAppearanceHeadline4" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Card Rekap Izin -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="@dimen/def_margin_near">
+                        android:layout_marginStart="4dp">
 
-                        <!-- Title and secondary text -->
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:singleLine="true"
-                            android:text="@string/title_status_only"
-                            android:textAppearance="?attr/textAppearanceBody2" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tvStatus"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:ellipsize="marquee"
-                            android:marqueeRepeatLimit="marquee_forever"
-                            android:scrollHorizontally="true"
-                            android:singleLine="true"
-                            android:text="@string/dummy_status_aman"
-                            android:textAppearance="?attr/textAppearanceHeadline4" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </TableRow>
-        </TableLayout>
-        <!-- Button Atur Toleransi Keterlambatan -->
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/def_margin_near"
-            android:layout_marginEnd="@dimen/def_margin_near"
-            app:backgroundTint="@color/colorSecondary"
-            android:text="@string/title_atur_toleransi"
-            />
-        <!-- Button Logout -->
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/def_margin_near"
-            android:layout_marginEnd="@dimen/def_margin_near"
-            app:backgroundTint="@color/red"
-            android:text="@string/title_keluar"
-            />
-    </LinearLayout>
-</ScrollView>
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/title_izin"
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvJumlahIzin"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/num_4"
+                                android:textAppearance="?attr/textAppearanceHeadline4" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/def_margin_near">
+
+                    <!-- Card Rekap Alfa -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
+
+                            <!-- Title and secondary text -->
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/title_alfa"
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvJumlahAlfa"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/num_0"
+                                android:textAppearance="?attr/textAppearanceHeadline4" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Card Status Rekap -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
+
+                            <!-- Title and secondary text -->
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/title_status_only"
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/dummy_status_aman"
+                                android:textAppearance="?attr/textAppearanceHeadline4" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </TableRow>
+            </TableLayout>
+            <!-- Button Atur Toleransi Keterlambatan -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAturToleransi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/def_margin_near"
+                android:layout_marginEnd="@dimen/def_margin_near"
+                android:text="@string/title_atur_toleransi"
+                app:backgroundTint="@color/colorSecondary" />
+            <!-- Button Logout -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/def_margin_near"
+                android:layout_marginEnd="@dimen/def_margin_near"
+                android:layout_marginBottom="@dimen/def_margin"
+                android:text="@string/title_keluar"
+                app:backgroundTint="@color/red" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
