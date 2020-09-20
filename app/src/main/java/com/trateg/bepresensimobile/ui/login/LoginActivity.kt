@@ -36,8 +36,8 @@ class LoginActivity : BaseActivity(), LoginContract.View {
             hideSoftKeyboard()
             if (isFormEmailValid() && isFormPaswordValid()) {
                 mPresenter?.doLogin(
-                    email = inputEmail.editText?.text.toString(),
-                    password = inputPassword.editText?.text.toString()
+                    email = getEmail(),
+                    password = getPassword()
                 )
             } else {
                 Snackbar.make(it, "Periksa kembali form!", Snackbar.LENGTH_SHORT).show()
@@ -102,7 +102,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     override fun isFormEmailValid(): Boolean {
         var valid = true
         inputEmail.error = null
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(inputEmail.editText?.text.toString())
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(getEmail())
                 .matches()
         ) {
             // jika input email bukan merupakan email
@@ -115,7 +115,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     override fun isFormPaswordValid(): Boolean {
         var valid = true
         inputPassword.error = null
-        if (inputPassword.editText?.text!!.toString().length < 6) {
+        if (getPassword().length < 6) {
             // jika input password kurang dari 6 karakter
             valid = false
             inputPassword.error = "Password tidak boleh kurang dari 6 karakter!"
