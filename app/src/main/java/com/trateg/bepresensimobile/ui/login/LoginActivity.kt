@@ -1,12 +1,12 @@
 package com.trateg.bepresensimobile.ui.login
 
-import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AlertDialog
 import androidx.biometric.BiometricManager
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : BaseActivity(), LoginContract.View {
 
     private var mPresenter: LoginContract.Presenter? = null
+    private var dialog: AlertDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,7 +90,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun showDialog(title: String, msg: String) {
-        MaterialAlertDialogBuilder(this)
+        dialog = MaterialAlertDialogBuilder(this)
             .setTitle(title)
             .setMessage(msg)
             .setPositiveButton("OKE") { it, which ->
@@ -219,6 +220,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun detachPresenter() {
+        dialog?.dismiss()
         mPresenter?.onDestroy()
         mPresenter = null
     }
