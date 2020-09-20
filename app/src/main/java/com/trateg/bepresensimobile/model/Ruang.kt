@@ -1,8 +1,11 @@
 package com.trateg.bepresensimobile.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Ruang(
     @SerializedName("beacon")
     val beacon: Beacon?,
@@ -12,4 +15,4 @@ data class Ruang(
     val kdRuang: String?,
     @SerializedName("nama_ruang")
     val namaRuang: String?
-)
+) : Parcelable

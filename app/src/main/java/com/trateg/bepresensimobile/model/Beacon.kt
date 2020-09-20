@@ -1,8 +1,11 @@
 package com.trateg.bepresensimobile.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Beacon(
     @SerializedName("kd_beacon")
     val kdBeacon: String?,
@@ -12,4 +15,4 @@ data class Beacon(
     val major: String?,
     @SerializedName("minor")
     val minor: String?
-)
+) : Parcelable

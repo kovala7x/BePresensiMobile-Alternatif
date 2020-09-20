@@ -15,5 +15,12 @@ class Constants {
         const val KEY_NIM = "nim"
         const val KEY_KD_DOSEN = "kodeDosen"
         const val KEY_ROLE = "role"
+        const val ACTION_TYPE = "action_type"
+        const val BUKA_PRESENSI = 1
+        const val TUTUP_PRESENSI = 2
+        const val CATAT_PRESENSI = 3
+        const val DATA_JADWAL = "data_jadwal"
+        const val FOUND = true
+        const val NOT_FOUND = false
     }
 }

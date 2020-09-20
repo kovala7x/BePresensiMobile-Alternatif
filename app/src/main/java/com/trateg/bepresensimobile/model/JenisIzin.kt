@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Matakuliah(
-    @SerializedName("kd_matakuliah")
-    val kdMatakuliah: String?,
-    @SerializedName("nama_matakuliah")
-    val namaMatakuliah: String?
+data class JenisIzin(
+    @SerializedName("kd_status_presensi")
+    val kdStatusPresensi: String?,
+    @SerializedName("keterangan_presensi")
+    val keteranganPresensi: String?
 ) : Parcelable

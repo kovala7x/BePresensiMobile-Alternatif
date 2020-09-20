@@ -1,49 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipeRefreshHome"
+    android:id="@+id/swipeRefreshOtentikasiPresensi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgColor">
-
+    android:background="@color/bgColor"
+    tools:context=".ui.otentikasi_presensi.OtentikasiPresensiActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvTanggal"
+                android:id="@+id/tvNamaMatakuliah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/def_margin_left"
                 android:layout_marginTop="@dimen/def_margin_top"
                 android:layout_marginEnd="@dimen/def_margin_right"
-                android:text="@string/dummy_full_date"
+                android:layout_marginBottom="@dimen/def_margin_bottom"
+                android:ellipsize="middle"
+                android:maxLines="2"
+                android:text="@string/dummy_matakuliah"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceHeadline5" />
 
+            <ImageView
+                android:id="@+id/imgBeacon"
+                android:layout_marginTop="@dimen/def_margin_top"
+                android:layout_marginBottom="@dimen/def_margin_bottom"
+                android:layout_gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/ibeacon_logo" />
+
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvKeteranganJadwal"
+                android:id="@+id/tvLokasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/def_margin_left"
                 android:layout_marginTop="@dimen/def_margin_top"
                 android:layout_marginEnd="@dimen/def_margin_right"
-                android:text="@string/dummy_keterangan"
+                android:layout_marginBottom="@dimen/def_margin_bottom"
+                android:text="@string/dummy_arahan_lokasi"
+                android:maxLines="2"
+                android:ellipsize="middle"
                 android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceBody2"
+                android:textAppearance="?attr/textAppearanceBody1"
                 android:textColor="?android:attr/textColorSecondary" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvJadwal"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvActionStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/def_margin_left"
                 android:layout_marginTop="@dimen/def_margin_top"
-                tools:listitem="@layout/item_jadwal_mahasiswa" />
+                android:layout_marginEnd="@dimen/def_margin_right"
+                android:text="@string/dummy_status_beacon"
+                android:maxLines="2"
+                android:ellipsize="middle"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="?android:attr/textColorSecondary" />
         </LinearLayout>
     </ScrollView>
+
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

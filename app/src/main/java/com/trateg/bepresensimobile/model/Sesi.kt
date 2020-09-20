@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class SesiMulai(
+data class Sesi(
     @SerializedName("jam_berakhir")
     val jamBerakhir: String?,
     @SerializedName("jam_mulai")

@@ -48,5 +48,26 @@
     <string name="label_password">Password</string>
     <string name="label_login">Login</string>
     <string name="label_lupa_password">Lupa password?</string>
+    <string name="title_lokasi">Lokasi:</string>
+    <string name="dummy_lokasi">Ruang 1101</string>
+    <string name="title_status_jadwal">Status:</string>
+    <string name="dummy_status_done">Sudah selesai</string>
+    <string name="btn_buka_sesi">Buka Sesi Presensi</string>
+    <string name="btn_tutup_sesi">Tutup Sesi Presensi</string>
+    <string name="btn_lihat_presensi">Lihat Presensi</string>
+    <string name="btn_isi_berita_acara">Isi Berita Acara</string>
+    <string name="dummy_arahan_lokasi">Silahkan masuk ke ruangan R219</string>
+    <string name="dummy_status_beacon">Memindai beacon CB101</string>
+    <string name="dummy_action_status">Menyimpan data presensi...</string>
+    <string name="title_tanggal">Tanggal</string>
+    <string name="title_kode_ruangan">Kode Ruangan</string>
+    <string name="title_sesi_dibuka">Sesi Dibuka</string>
+    <string name="dummy_jam_mulai">07:00</string>
+    <string name="title_sesi_ditutup">Sesi Ditutup</string>
+    <string name="dummy_jam_berakhir">08:20</string>
+    <string name="label_deskripsi_tatap_muka">Deskripsi Tatap Muka</string>
+    <string name="label_deskripsi_penugasan">Deskripsi Penugasan</string>
+    <string name="label_simpan_berita_acara">Simpan Berita Acara</string>
+    <string name="dummy_date_1">31/12/2020</string>
 
 </resources>

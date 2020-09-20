@@ -1,8 +1,11 @@
 package com.trateg.bepresensimobile.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Rekapitulasi(
     @SerializedName("alfa")
     val alfa: Int?,
@@ -14,4 +17,4 @@ data class Rekapitulasi(
     val sakit: Int?,
     @SerializedName("status")
     val status: Status?
-)
+) : Parcelable

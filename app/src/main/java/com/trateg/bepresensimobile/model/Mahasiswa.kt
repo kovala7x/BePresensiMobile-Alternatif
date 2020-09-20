@@ -1,8 +1,11 @@
 package com.trateg.bepresensimobile.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Mahasiswa(
     @SerializedName("device_imei")
     val deviceImei: String?,
@@ -16,4 +19,4 @@ data class Mahasiswa(
     val namaMahasiswa: String?,
     @SerializedName("nim")
     val nim: String?
-)
+) : Parcelable

@@ -1,7 +1,6 @@
 package com.trateg.bepresensimobile.ui.profil
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +11,6 @@ import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
 import com.trateg.bepresensimobile.ui.login.LoginActivity
 import com.trateg.bepresensimobile.util.SessionManager
-import kotlinx.android.synthetic.main.activity_ajukan_surat.*
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profil.*
 
 class ProfilFragment : BaseFragment(),
@@ -96,6 +92,7 @@ class ProfilFragment : BaseFragment(),
         tvRekap.visibility = View.VISIBLE
         layoutRekap.visibility = View.VISIBLE
         btnAturToleransi.visibility = View.GONE
+        setRekap(0,0,0,"-")
         swipeRefreshProfil.setOnRefreshListener {
             mPresenter?.getRekap()
         }
