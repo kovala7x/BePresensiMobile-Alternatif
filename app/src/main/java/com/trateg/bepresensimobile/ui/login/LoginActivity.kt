@@ -1,17 +1,22 @@
 package com.trateg.bepresensimobile.ui.login
 
+import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.biometric.BiometricManager
 import androidx.core.widget.doOnTextChanged
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.trateg.bepresensimobile.BaseActivity
 import com.trateg.bepresensimobile.R
 import com.trateg.bepresensimobile.ui.main.MainActivity
 import com.trateg.bepresensimobile.util.SessionManager
 import kotlinx.android.synthetic.main.activity_login.*
+
 
 class LoginActivity : BaseActivity(), LoginContract.View {
 
@@ -25,10 +30,10 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     private fun init() {
+        isBiometricAvailable()
         mPresenter?.setupSession()
         btnLogin.setOnClickListener {
             hideSoftKeyboard()
-            // BELUM BERES
             if (isFormEmailValid() && isFormPaswordValid()) {
                 mPresenter?.doLogin(
                     email = inputEmail.editText?.text.toString(),
@@ -83,6 +88,17 @@ class LoginActivity : BaseActivity(), LoginContract.View {
             }.show()
     }
 
+    override fun showDialog(title: String, msg: String) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(title)
+            .setMessage(msg)
+            .setPositiveButton("OKE") { it, which ->
+                it.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
     override fun isFormEmailValid(): Boolean {
         var valid = true
         inputEmail.error = null
@@ -117,7 +133,81 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun goToHome() {
         startActivity(Intent(baseContext, MainActivity::class.java))
+        detachPresenter()
         finish()
+    }
+
+    override fun isBiometricAvailable(): Boolean {
+        var isAvailable = false
+        val biometricManager = BiometricManager.from(this)
+        when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK)) {
+            BiometricManager.BIOMETRIC_SUCCESS -> {
+                isAvailable = true
+                Log.d("LoginActivity", "Perangkat ini mendukung fitur biometrik")
+            }
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
+                isAvailable = false
+                Log.e("LoginActivity", "Tidak ada fitur biometrik pada perangkat ini.")
+                showDialog(
+                    "Biometrik tidak didukung!",
+                    "Tidak ada fitur biometrik pada perangkat ini."
+                )
+            }
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
+                isAvailable = false
+                Log.e("LoginActivity", "Fitur biometrik sedang tidak tersedia.")
+                showDialog(
+                    "Biometrik tidak tersedia!",
+                    "Fitur biometrik sedang tidak tersedia."
+                )
+            }
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+                isAvailable = false
+                Log.e(
+                    "LoginActivity",
+                    "Belum ada identitas biometrik yang didaftarkan pada perangkat ini."
+                )
+                showDialog(
+                    "Biometrik belum didaftarkan!",
+                    "Belum ada identitas biometrik yang didaftarkan pada perangkat ini."
+                )
+            }
+            BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED -> {
+                isAvailable = false
+                Log.e(
+                    "LoginActivity",
+                    "Pembaharuan fitur keamanan perangkat perlu dilakukan."
+                )
+                showDialog(
+                    "Perhatian!",
+                    "Pembaharuan fitur keamanan perangkat perlu dilakukan."
+                )
+            }
+            BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED -> {
+                isAvailable = false
+                Log.e(
+                    "LoginActivity",
+                    "Fitur biometrik tidak didukung."
+                )
+                showDialog(
+                    "Perhatian!",
+                    "Fitur biometrik tidak didukung."
+                )
+            }
+            BiometricManager.BIOMETRIC_STATUS_UNKNOWN -> {
+                isAvailable = false
+                Log.e(
+                    "LoginActivity",
+                    "Fitur biometrik mungkin tidak didukung atau tingkat keamanan rentan."
+                )
+                showDialog(
+                    "Perhatian!",
+                    "Fitur biometrik mungkin tidak didukung atau tingkat keamanan rendah."
+                )
+            }
+        }
+
+        return isAvailable
     }
 
     override fun initSession(): SessionManager {

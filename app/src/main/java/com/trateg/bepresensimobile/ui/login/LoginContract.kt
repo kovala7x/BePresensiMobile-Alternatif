@@ -15,10 +15,12 @@ interface LoginContract {
     }
 
     interface View: BaseView<Presenter>{
+        fun isBiometricAvailable(): Boolean
         fun initSession(): SessionManager
         fun getEmail(): String
         fun getPassword(): String
         fun onError(msg: String)
+        fun showDialog(title: String, msg: String)
         fun isFormEmailValid(): Boolean
         fun isFormPaswordValid(): Boolean
         fun hideSoftKeyboard()
