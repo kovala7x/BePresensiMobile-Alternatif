@@ -64,7 +64,7 @@ class ListJadwalMahasiswaAdapter(val listJadwalMahasiswa: ArrayList<Jadwal>) :
             holder.tvHadir.visibility = View.VISIBLE
             holder.tvStatusHadir.visibility = View.VISIBLE
             holder.btnDetailPresensi.visibility = View.VISIBLE
-            holder.tvStatusHadir.text = jadwal.kehadiran ?: "null"
+            holder.tvStatusHadir.text = jadwal.statusHadir ?: "null"
             if (!jadwal.sudahPresensi!!) { // Cek apakah sudah melakukan presensi
                 if (jadwal.sesiPresensiDibuka!!) { // Cek apakah sesi presensi dibuka
                     holder.btnPresensi.visibility = View.VISIBLE

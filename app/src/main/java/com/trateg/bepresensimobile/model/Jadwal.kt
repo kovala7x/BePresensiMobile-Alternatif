@@ -20,7 +20,7 @@ data class Jadwal(
     @SerializedName("kd_jadwal")
     val kdJadwal: String?,
     @SerializedName("kehadiran")
-    val kehadiran: String?,
+    val kehadiran: List<Kehadiran>?,
     @SerializedName("matakuliah")
     val matakuliah: Matakuliah?,
     @SerializedName("ruang")
@@ -31,6 +31,8 @@ data class Jadwal(
     val sesiMulai: SesiMulai?,
     @SerializedName("sesi_presensi_dibuka")
     val sesiPresensiDibuka: Boolean?,
+    @SerializedName("status_hadir")
+    val statusHadir: String?,
     @SerializedName("sudah_presensi")
     val sudahPresensi: Boolean?,
     @SerializedName("toleransi_keterlambatan")

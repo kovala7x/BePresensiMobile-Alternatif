@@ -73,7 +73,7 @@ class ListJadwalDosenAdapter(val listJadwalDosen: ArrayList<Jadwal>) :
 
         if (jadwal.beritaAcara == null) { // Cek apakah berita acara belum diisi
             if (jadwal.sesiPresensiDibuka!!) { // Cek apakah sesi presensi dibuka
-                status = jadwal.kehadiran ?: "Perkuliahan sedang berlangsung"
+                status = jadwal.statusHadir ?: "Perkuliahan sedang berlangsung"
                 holder.btnTutupSesi.visibility = View.VISIBLE
                 holder.btnLihatPresensi.visibility = View.VISIBLE
             } else { // Jika sesi presensi ditutup
@@ -85,7 +85,7 @@ class ListJadwalDosenAdapter(val listJadwalDosen: ArrayList<Jadwal>) :
                     status = "Perkuliahan siap dilaksanakan"
                     holder.btnBukaSesi.visibility = View.VISIBLE
                 }
-                if(jadwal.kehadiran !=null){
+                if(jadwal.statusHadir !=null){
                     // Jika sudah perkuliahan telah selesai dilaksanakan
                     status = "Berita acara belum diisi!"
                     holder.btnIsiBeritaAcara.visibility = View.VISIBLE
