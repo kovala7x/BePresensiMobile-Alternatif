@@ -20,6 +20,7 @@ class OtentikasiPresensiContract {
         fun initView()
         fun getIntentExtraData()
         fun setActionBarTitle(type: Int)
+        fun setNamaMatakuliah(matakuliah: String)
         fun setLokasiPresensi(visible: Boolean, lokasi: String)
         fun setActionStatus(visible: Boolean, action: String)
         suspend fun scanBeacon(dataBeacon: Beacon): Boolean

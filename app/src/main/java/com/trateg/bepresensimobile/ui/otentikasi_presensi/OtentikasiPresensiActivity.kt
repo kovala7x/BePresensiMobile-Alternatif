@@ -36,6 +36,9 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
 
     override fun initView() {
         getIntentExtraData()
+        setNamaMatakuliah(
+            matakuliah = dataJadwal!!.matakuliah?.namaMatakuliah!!
+        )
         setLokasiPresensi(
             lokasi = dataJadwal!!.ruang?.namaRuang + " - " + dataJadwal!!.ruang?.kdRuang,
             visible = true
@@ -89,6 +92,10 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
                 finish()
             }
         }
+    }
+
+    override fun setNamaMatakuliah(matakuliah: String) {
+        tvNamaMatakuliah.text = matakuliah
     }
 
     override fun setLokasiPresensi(visible: Boolean, lokasi: String) {
