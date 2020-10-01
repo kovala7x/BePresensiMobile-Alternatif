@@ -1,5 +1,6 @@
 package com.trateg.bepresensimobile.ui.detail_presensi_kelas
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import com.trateg.bepresensimobile.model.Jadwal
 import com.trateg.bepresensimobile.model.Kehadiran
 import com.trateg.bepresensimobile.model.PersentaseKehadiran
 import com.trateg.bepresensimobile.ui.adapter.ListDaftarHadirAdapter
+import com.trateg.bepresensimobile.ui.ubah_status_presensi.UbahStatusPresensiActivity
 import com.trateg.bepresensimobile.util.Constants
 import kotlinx.android.synthetic.main.activity_detail_presensi_kelas.*
 import kotlinx.coroutines.CoroutineScope
@@ -106,8 +108,9 @@ class DetailPresensiKelasActivity : BaseActivity(), DetailPresensiKelasContract.
     }
 
     override fun onKehadiranClicked(data: Kehadiran) {
-        //TODO("Not yet implemented")
-        showToast("Mahasiswa " + data.mahasiswa?.namaMahasiswa!! + " dipanggil !")
+        val intent = Intent(this, UbahStatusPresensiActivity::class.java)
+        intent.putExtra(Constants.DATA_KEHADIRAN, data)
+        startActivity(intent)
     }
 
     override fun setTextMatakuliah(matakuliah: String) {

@@ -8,6 +8,8 @@ data class Data(
     val jadwal: Jadwal?,
     @SerializedName("auth")
     val auth: Auth?,
+    @SerializedName("kehadiran")
+    val kehadiran: Kehadiran?,
     @SerializedName("rekapitulasi")
     val rekapitulasi: Rekapitulasi?,
     @SerializedName("surat_izin")

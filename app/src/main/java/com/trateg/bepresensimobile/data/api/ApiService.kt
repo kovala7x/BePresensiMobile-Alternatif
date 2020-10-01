@@ -38,6 +38,12 @@ interface ApiService {
 
     @Multipart
     @Headers("Accept: application/json")
+    @POST("mobile/presensi/ubah-status/")
+    suspend fun postUbahStatusKehadiran(@Part("kd_kehadiran") kdKehadiran: Int,
+                                        @Part("is_hadir") isHadir: Int) : Response<BaseResponse>
+
+    @Multipart
+    @Headers("Accept: application/json")
     @POST("mobile/presensi/catat")
     suspend fun postCatatPresensi(@Part("nim") nim: RequestBody,
                                   @Part("kd_jadwal") kdJadwal: RequestBody) : Response<BaseResponse>
