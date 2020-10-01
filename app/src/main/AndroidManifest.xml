@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.isi_berita_acara.IsiBeritaAcaraActivity"></activity>
+        <activity android:name=".ui.detail_berita_acara.DetailBeritaAcaraActivity"></activity>
+        <activity android:name=".ui.isi_berita_acara.IsiBeritaAcaraActivity" />
         <activity android:name=".ui.otentikasi_presensi.OtentikasiPresensiActivity" />
         <activity android:name=".ui.atur_toleransi.AturToleransiActivity" />
         <activity

@@ -8,6 +8,10 @@ import retrofit2.http.*
 
 interface ApiService {
     @Headers("Accept: application/json")
+    @GET("mobile/berita-acara/detail/{kdBeritaAcara}")
+    suspend fun getDetailBeritaAcara(@Path("kdBeritaAcara") kdBeritaAcara :String) : Response<BaseResponse>
+
+    @Headers("Accept: application/json")
     @GET("mobile/jadwal/mahasiswa/{nim}")
     suspend fun getJadwalMhs(@Path("nim") nim :String) : Response<BaseResponseList>
 

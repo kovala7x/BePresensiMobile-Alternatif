@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshDetailBeritaAcara"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColor"
+    tools:context=".ui.detail_berita_acara.DetailBeritaAcaraActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/layoutDetailBeritaAcara"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvNamaMatakuliah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/def_margin_left"
+                android:layout_marginTop="@dimen/def_margin_top"
+                android:layout_marginEnd="@dimen/def_margin_right"
+                android:layout_marginBottom="@dimen/def_margin_bottom"
+                android:ellipsize="middle"
+                android:maxLines="2"
+                android:text="@string/dummy_matakuliah"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceHeadline5" />
+
+            <TableLayout
+                android:id="@+id/layoutRekap"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/def_margin_near"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <!-- Card Rekap Sakit -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/title_tanggal"
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvTanggal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/dummy_date_1"
+                                android:textAppearance="?attr/textAppearanceHeadline5" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Card Rekap Izin -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/title_kode_ruangan"
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvRuang"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/dummy_lokasi"
+                                android:textAppearance="?attr/textAppearanceHeadline5" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/def_margin_near">
+
+                    <!-- Card Rekap Alfa -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
+
+                            <!-- Title and secondary text -->
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="Mahasiswa Hadir"
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvJumlahMhsHadir"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/dummy_jumlah_mhs_hadir"
+                                android:textAppearance="?attr/textAppearanceHeadline5" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Card Status Rekap -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
+
+                            <!-- Title and secondary text -->
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/title_mhs_tidak_hadir"
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvJumlahMhsTidakHadir"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/dummy_jumlah_mhs_tidak_hadir"
+                                android:textAppearance="?attr/textAppearanceHeadline5" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/def_margin_near">
+
+                    <!-- Card Rekap Alfa -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
+
+                            <!-- Title and secondary text -->
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/title_sesi_dibuka"
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvSesiDibuka"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/dummy_jam_mulai"
+                                android:textAppearance="?attr/textAppearanceHeadline5" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Card Status Rekap -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/def_margin_near">
+
+                            <!-- Title and secondary text -->
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/title_sesi_ditutup"
+                                android:textAppearance="?attr/textAppearanceBody2" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvSesiDitutup"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@string/dummy_jam_berakhir"
+                                android:textAppearance="?attr/textAppearanceHeadline5" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </TableRow>
+            </TableLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputDeskTatapMuka"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/def_margin_near"
+                android:layout_marginStart="@dimen/def_margin_near"
+                android:layout_marginBottom="@dimen/def_margin_near"
+                android:layout_marginEnd="@dimen/def_margin_near"
+                android:hint="@string/label_deskripsi_tatap_muka">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:enabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:imeOptions="actionNext"
+                    android:inputType="textLongMessage|textMultiLine"
+                    android:scrollbars="vertical" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputDeskPenugasan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/def_margin_near"
+                android:layout_marginBottom="@dimen/def_margin_near"
+                android:layout_marginEnd="@dimen/def_margin_near"
+                android:hint="@string/label_deskripsi_penugasan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:enabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:imeOptions="actionDone"
+                    android:inputType="textLongMessage|textMultiLine"
+                    android:scrollbars="vertical" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
