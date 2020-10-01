@@ -51,6 +51,7 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
             if(actionType == Constants.TUTUP_PRESENSI){
                 imgBeacon.visibility = View.GONE
                 setLokasiPresensi(false,"-")
+                setActionStatus(false,"-")
                 biometricPrompt.authenticate(promptInfo)
             }else{
                 when (scanBeacon(dataBeacon = dataJadwal!!.ruang?.beacon!!)) {
