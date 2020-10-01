@@ -1,5 +1,6 @@
 package com.trateg.bepresensimobile.ui.lihat_presensi_kelas
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
@@ -9,6 +10,7 @@ import com.trateg.bepresensimobile.R
 import com.trateg.bepresensimobile.model.Jadwal
 import com.trateg.bepresensimobile.model.PersentaseKehadiran
 import com.trateg.bepresensimobile.ui.adapter.GridPersentaseKehadiranAdapter
+import com.trateg.bepresensimobile.ui.detail_presensi_kelas.DetailPresensiKelasActivity
 import com.trateg.bepresensimobile.util.Constants
 import kotlinx.android.synthetic.main.activity_lihat_presensi_kelas.*
 import kotlinx.coroutines.CoroutineScope
@@ -32,6 +34,7 @@ class LihatPresensiKelasActivity : BaseActivity(), LihatPresensiKelasContract.Vi
         showBackButton(true)
         title = "Lihat Presensi Kelas"
         getIntentExtraData()
+        setTextMatakuliah(dataJadwal!!.matakuliah?.namaMatakuliah?:"ErrNull")
         CoroutineScope(Dispatchers.Main).launch {
             listPersentaseKehadiran = mPresenter?.getListPersentaseKehadiran(
                 kdJadwal = dataJadwal!!.kdJadwal!!
@@ -84,19 +87,22 @@ class LihatPresensiKelasActivity : BaseActivity(), LihatPresensiKelasContract.Vi
     override fun onGetListPersentaseKehadiranSuccess(data: List<PersentaseKehadiran>) {
         listPersentase.clear()
         listPersentase.addAll(data)
+        rvSesi.setHasFixedSize(true)
         rvSesi.layoutManager = GridLayoutManager(this, 2)
         val gridPersentaseKehadiran = GridPersentaseKehadiranAdapter(listPersentase)
         rvSesi.adapter = gridPersentaseKehadiran
         gridPersentaseKehadiran.setOnClickCallback(object: GridPersentaseKehadiranAdapter.OnItemClickCallback{
             override fun onItemClicked(data: PersentaseKehadiran) {
-                onSesiClicked(data)
+                onSesiClicked(data, dataJadwal!!)
             }
         })
     }
 
-    override fun onSesiClicked(data: PersentaseKehadiran) {
-        //TODO("Not yet implemented")
-        showToast("Sesi " +data.kdSesi.toString() + " dipanggil !")
+    override fun onSesiClicked(dtPersentase: PersentaseKehadiran, dtJadwal: Jadwal) {
+        val intent = Intent(this, DetailPresensiKelasActivity::class.java)
+        intent.putExtra(Constants.DATA_JADWAL, dtJadwal)
+        intent.putExtra(Constants.DATA_PERSENTASE, dtPersentase)
+        startActivity(intent)
     }
 
     override fun setTextMatakuliah(matakuliah: String) {

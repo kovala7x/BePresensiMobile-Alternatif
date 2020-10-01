@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/listBody"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/tvStatusHadir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/def_margin">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="@string/dummy_nama"
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvStatusHadir"
+        android:padding="@dimen/def_margin"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_status_hadir"
+        android:textAppearance="?attr/textAppearanceOverline"
+        />
+    <View
+        android:layout_below="@id/listBody"
+        android:layout_width="fill_parent"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_height="1dp"
+        android:background="@color/grey" />
+</RelativeLayout>

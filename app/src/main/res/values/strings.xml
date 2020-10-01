@@ -76,5 +76,7 @@
     <string name="dummy_kode_sesi">Sesi 3</string>
     <string name="dummy_persentase_kehadiran">85%</string>
     <string name="title_pilih_sesi">Silahkan pilih sesi perkuliahan</string>
+    <string name="dummy_subtitle_sesi">Sesi 2 perkuliahan</string>
+    <string name="dummy_status_hadir">dispen</string>
 
 </resources>

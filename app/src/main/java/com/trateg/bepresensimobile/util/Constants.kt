@@ -20,7 +20,7 @@ class Constants {
         const val TUTUP_PRESENSI = 2
         const val CATAT_PRESENSI = 3
         const val DATA_JADWAL = "data_jadwal"
-        const val DATA_BERITA_ACARA = "data_berita_acara"
+        const val DATA_PERSENTASE = "data_persentase"
         const val FOUND = true
         const val NOT_FOUND = false
     }
