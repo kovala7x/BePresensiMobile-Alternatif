@@ -73,5 +73,8 @@
     <string name="title_mhs_tidak_hadir">Mhs Tidak Hadir</string>
     <string name="dummy_jumlah_mhs_hadir">28</string>
     <string name="dummy_jumlah_mhs_tidak_hadir">3</string>
+    <string name="dummy_kode_sesi">Sesi 3</string>
+    <string name="dummy_persentase_kehadiran">85%</string>
+    <string name="title_pilih_sesi">Silahkan pilih sesi perkuliahan</string>
 
 </resources>

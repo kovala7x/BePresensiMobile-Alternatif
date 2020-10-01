@@ -15,6 +15,7 @@ import com.trateg.bepresensimobile.ui.adapter.ListJadwalDosenAdapter
 import com.trateg.bepresensimobile.ui.adapter.ListJadwalMahasiswaAdapter
 import com.trateg.bepresensimobile.ui.detail_berita_acara.DetailBeritaAcaraActivity
 import com.trateg.bepresensimobile.ui.isi_berita_acara.IsiBeritaAcaraActivity
+import com.trateg.bepresensimobile.ui.lihat_presensi_kelas.LihatPresensiKelasActivity
 import com.trateg.bepresensimobile.ui.otentikasi_presensi.OtentikasiPresensiActivity
 import com.trateg.bepresensimobile.util.Constants
 import com.trateg.bepresensimobile.util.SessionManager
@@ -191,8 +192,9 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun goToLihatPresensi(data: Jadwal) {
-        //TODO("Not yet implemented")
-        onError("Lihat presensi ${data.matakuliah?.namaMatakuliah}!")
+        val intent = Intent(requireContext(), LihatPresensiKelasActivity::class.java)
+        intent.putExtra(Constants.DATA_JADWAL, data)
+        startActivity(intent)
     }
 
     override fun goToIsiBeritaAcara(data: Jadwal) {

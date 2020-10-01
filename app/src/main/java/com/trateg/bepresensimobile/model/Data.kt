@@ -24,5 +24,7 @@ data class ListData(
     @SerializedName("kehadiran")
     val kehadiran: List<Kehadiran>?,
     @SerializedName("berita_acara")
-    val beritaAcara: List<BeritaAcara>?
+    val beritaAcara: List<BeritaAcara>?,
+    @SerializedName("persentase_kehadiran")
+    val persentaseKehadiran: List<PersentaseKehadiran>?
 )
