@@ -30,11 +30,8 @@ class LihatPresensiKelasActivity : BaseActivity(), LihatPresensiKelasContract.Vi
         initView()
     }
 
-    override fun initView() {
-        showBackButton(true)
-        title = "Lihat Presensi Kelas"
-        getIntentExtraData()
-        setTextMatakuliah(dataJadwal!!.matakuliah?.namaMatakuliah?:"ErrNull")
+    override fun onResume() {
+        super.onResume()
         CoroutineScope(Dispatchers.Main).launch {
             listPersentaseKehadiran = mPresenter?.getListPersentaseKehadiran(
                 kdJadwal = dataJadwal!!.kdJadwal!!
@@ -43,6 +40,13 @@ class LihatPresensiKelasActivity : BaseActivity(), LihatPresensiKelasContract.Vi
                 onGetListPersentaseKehadiranSuccess(listPersentaseKehadiran!!)
             }
         }
+    }
+
+    override fun initView() {
+        showBackButton(true)
+        title = "Lihat Presensi Kelas"
+        getIntentExtraData()
+        setTextMatakuliah(dataJadwal!!.matakuliah?.namaMatakuliah?:"ErrNull")
         swipeRefreshLihatPresensiKelas.setOnRefreshListener {
             CoroutineScope(Dispatchers.Main).launch {
                 listPersentaseKehadiran = mPresenter?.getListPersentaseKehadiran(

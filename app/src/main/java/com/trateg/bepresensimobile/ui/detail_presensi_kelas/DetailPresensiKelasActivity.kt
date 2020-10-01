@@ -33,12 +33,8 @@ class DetailPresensiKelasActivity : BaseActivity(), DetailPresensiKelasContract.
         initView()
     }
 
-    override fun initView() {
-        showBackButton(true)
-        title = "Detail Presensi Kelas"
-        getIntentExtraData()
-        setTextMatakuliah(dataJadwal!!.matakuliah?.namaMatakuliah?:"ErrNull")
-        setTextSubtitleSesi(dataPersentase!!.kdSesi?:0)
+    override fun onResume() {
+        super.onResume()
         CoroutineScope(Dispatchers.Main).launch {
             listDaftarHadirKelas = mPresenter?.getListDaftarHadirKelas(
                 kdJadwal = dataJadwal!!.kdJadwal!!,
@@ -48,6 +44,14 @@ class DetailPresensiKelasActivity : BaseActivity(), DetailPresensiKelasContract.
                 onGetListDaftarHadirKelasSuccess(listDaftarHadirKelas!!)
             }
         }
+    }
+
+    override fun initView() {
+        showBackButton(true)
+        title = "Detail Presensi Kelas"
+        getIntentExtraData()
+        setTextMatakuliah(dataJadwal!!.matakuliah?.namaMatakuliah?:"ErrNull")
+        setTextSubtitleSesi(dataPersentase!!.kdSesi?:0)
         swipeRefreshDetailPresensiKelas.setOnRefreshListener {
             CoroutineScope(Dispatchers.Main).launch {
                 listDaftarHadirKelas = mPresenter?.getListDaftarHadirKelas(
