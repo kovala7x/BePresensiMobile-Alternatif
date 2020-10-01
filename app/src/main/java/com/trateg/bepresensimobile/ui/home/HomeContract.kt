@@ -26,7 +26,7 @@ interface HomeContract{
         fun goToBukaSesiPresensi(data: Jadwal)
         fun goToTutupSesiPresensi(data: Jadwal)
         fun goToCatatPresensi(data: Jadwal)
-        fun goToDetailPresensiDosen(data: Jadwal)
+        fun goToLihatBeritaAcara(data: Jadwal)
         fun goToDetailPresensiMhs(data: Jadwal)
         fun goToLihatPresensi(data: Jadwal)
         fun goToIsiBeritaAcara(data: Jadwal)

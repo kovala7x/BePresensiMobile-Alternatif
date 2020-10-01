@@ -21,7 +21,7 @@ class ListJadwalDosenAdapter(val listJadwalDosen: ArrayList<Jadwal>) :
 
     interface OnItemClickCallback {
         fun OnBtnBukaSesiClicked(data: Jadwal?)
-        fun OnBtnDetailPresensiClicked(data: Jadwal?)
+        fun OnBtnLihatBeritaAcaraClicked(data: Jadwal?)
         fun OnBtnTutupSesiClicked(data: Jadwal?)
         fun OnBtnLihatPresensiClicked(data: Jadwal?)
         fun OnBtnIsiBeritaAcaraClicked(data: Jadwal?)
@@ -34,7 +34,7 @@ class ListJadwalDosenAdapter(val listJadwalDosen: ArrayList<Jadwal>) :
         var tvLokasi: TextView = itemView.findViewById(R.id.tvLokasi)
         var tvStatusPerkuliahan: TextView = itemView.findViewById(R.id.tvStatusPerkuliahan)
         var btnBukaSesi: Button = itemView.findViewById(R.id.btnBukaSesi)
-        var btnDetailPresensi: Button = itemView.findViewById(R.id.btnDetailPresensi)
+        var btnLihatBeritaAcara: Button = itemView.findViewById(R.id.btnLihatBeritaAcara)
         var btnTutupSesi: Button = itemView.findViewById(R.id.btnTutupSesi)
         var btnLihatPresensi: Button = itemView.findViewById(R.id.btnLihatPresensi)
         var btnIsiBeritaAcara: Button = itemView.findViewById(R.id.btnIsiBeritaAcara)
@@ -64,7 +64,7 @@ class ListJadwalDosenAdapter(val listJadwalDosen: ArrayList<Jadwal>) :
         holder.tvWaktuPerkuliahan.text = waktu
         holder.tvLokasi.text = lokasi
 
-        holder.btnDetailPresensi.visibility = View.GONE
+        holder.btnLihatBeritaAcara.visibility = View.GONE
         holder.btnBukaSesi.visibility = View.GONE
         holder.btnTutupSesi.visibility = View.GONE
         holder.btnLihatPresensi.visibility = View.GONE
@@ -94,12 +94,12 @@ class ListJadwalDosenAdapter(val listJadwalDosen: ArrayList<Jadwal>) :
 
         } else { // Jika berita acara sudah diisi
             status = "Perkuliahan selesai dilaksanakan"
-            holder.btnDetailPresensi.visibility = View.VISIBLE
+            holder.btnLihatBeritaAcara.visibility = View.VISIBLE
         }
 
         holder.tvStatusPerkuliahan.text = status
-        holder.btnDetailPresensi.setOnClickListener {
-            onItemClickCallback.OnBtnDetailPresensiClicked(listJadwalDosen[holder.adapterPosition])
+        holder.btnLihatBeritaAcara.setOnClickListener {
+            onItemClickCallback.OnBtnLihatBeritaAcaraClicked(listJadwalDosen[holder.adapterPosition])
         }
         holder.btnBukaSesi.setOnClickListener {
             onItemClickCallback.OnBtnBukaSesiClicked(listJadwalDosen[holder.adapterPosition])
@@ -113,8 +113,8 @@ class ListJadwalDosenAdapter(val listJadwalDosen: ArrayList<Jadwal>) :
         holder.btnIsiBeritaAcara.setOnClickListener {
             onItemClickCallback.OnBtnIsiBeritaAcaraClicked(listJadwalDosen[holder.adapterPosition])
         }
-        holder.btnDetailPresensi.setOnClickListener {
-            onItemClickCallback.OnBtnDetailPresensiClicked(listJadwalDosen[holder.adapterPosition])
+        holder.btnLihatBeritaAcara.setOnClickListener {
+            onItemClickCallback.OnBtnLihatBeritaAcaraClicked(listJadwalDosen[holder.adapterPosition])
         }
     }
 

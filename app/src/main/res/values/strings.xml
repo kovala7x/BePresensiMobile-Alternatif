@@ -69,5 +69,9 @@
     <string name="label_deskripsi_penugasan">Deskripsi Penugasan</string>
     <string name="label_simpan_berita_acara">Simpan Berita Acara</string>
     <string name="dummy_date_1">31/12/2020</string>
+    <string name="title_lihat_berita_acara">Lihat Berita Acara</string>
+    <string name="title_mhs_tidak_hadir">Mhs Tidak Hadir</string>
+    <string name="dummy_jumlah_mhs_hadir">28</string>
+    <string name="dummy_jumlah_mhs_tidak_hadir">3</string>
 
 </resources>

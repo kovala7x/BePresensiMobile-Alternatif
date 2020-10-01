@@ -134,11 +134,11 @@
                 android:text="@string/btn_buka_sesi" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnDetailPresensi"
+                android:id="@+id/btnLihatBeritaAcara"
                 style="?attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_detail_presensi" />
+                android:text="@string/title_lihat_berita_acara" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
