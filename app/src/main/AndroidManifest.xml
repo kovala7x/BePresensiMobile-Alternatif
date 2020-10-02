@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ubah_status_presensi.UbahStatusPresensiActivity"></activity>
+        <activity android:name=".ui.lihat_presensi_mahasiswa.LihatPresensiMahasiswaActivity"></activity>
+        <activity android:name=".ui.ubah_status_presensi.UbahStatusPresensiActivity" />
         <activity android:name=".ui.detail_presensi_kelas.DetailPresensiKelasActivity" />
         <activity android:name=".ui.lihat_presensi_kelas.LihatPresensiKelasActivity" />
         <activity android:name=".ui.detail_berita_acara.DetailBeritaAcaraActivity" />
