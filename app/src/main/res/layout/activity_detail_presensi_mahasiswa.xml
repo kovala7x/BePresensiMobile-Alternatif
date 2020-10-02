@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollViewLihatPresensiMahasiswa"
+    android:id="@+id/swipeRefreshDetailPresensiMahasiswa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor"
-    tools:context=".ui.lihat_presensi_mahasiswa.LihatPresensiMahasiswaActivity">
+    tools:context=".ui.detail_presensi_mahasiswa.DetailPresensiMahasiswaActivity">
 
     <LinearLayout
+        android:id="@+id/layoutDetailPresensiMahasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -70,8 +71,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingStart="@dimen/def_margin_near"
-            android:paddingEnd="@dimen/def_margin_near"
-            android:paddingTop="@dimen/def_margin">
+            android:paddingTop="@dimen/def_margin"
+            android:paddingEnd="@dimen/def_margin_near">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
@@ -91,18 +92,18 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="@string/title_ruangan"
+                        android:text="@string/title_sesi_perkuliahan"
                         android:textAppearance="?attr/textAppearanceBody2" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvKdRuangan"
+                        android:id="@+id/tvSesi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="marquee"
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="@string/dummy_kode_ruangan"
+                        android:text="@string/dummy_kode_sesi"
                         android:textAppearance="?attr/textAppearanceHeadline5" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -147,9 +148,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingStart="@dimen/def_margin_near"
-            android:paddingEnd="@dimen/def_margin_near"
             android:paddingTop="@dimen/def_margin_near"
-            android:paddingBottom="@dimen/def_margin">
+            android:paddingEnd="@dimen/def_margin_near">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
@@ -169,18 +169,18 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="@string/title_jumlah_sesi"
+                        android:text="@string/title_sesi_dibuka"
                         android:textAppearance="?attr/textAppearanceBody2" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvJumlahSesi"
+                        android:id="@+id/tvSesiDibuka"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="marquee"
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="@string/dummy_jml_sesi"
+                        android:text="@string/dummy_sesi_dibuka"
                         android:textAppearance="?attr/textAppearanceHeadline5" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -203,37 +203,100 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="@string/title_sesi_dihadiri"
+                        android:text="@string/title_jam_presensi"
                         android:textAppearance="?attr/textAppearanceBody2" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvJumlahSesiDihadiri"
+                        android:id="@+id/tvJamPresensi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="marquee"
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="@string/dummy_jml_sesi_dihadiri"
+                        android:text="@string/dummy_jam_presensi"
                         android:textAppearance="?attr/textAppearanceHeadline5" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/def_margin"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:text="@string/subtitle_detail_kehadiran"
-            android:textAppearance="?attr/textAppearanceBody2" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvKehadiran"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/def_margin_near"
-            tools:listitem="@layout/item_kehadiran_sesi" />
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/def_margin_near"
+            android:paddingTop="@dimen/def_margin_near"
+            android:paddingEnd="@dimen/def_margin_near"
+            android:paddingBottom="@dimen/def_margin">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/def_margin_near">
+
+                    <!-- Title and secondary text -->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="@string/title_status_presensi"
+                        android:textAppearance="?attr/textAppearanceBody2" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvStatusPresensi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@string/dummy_status_hadir"
+                        android:textAppearance="?attr/textAppearanceHeadline6" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardKdSuratIzin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/def_margin_near">
+
+                    <!-- Title and secondary text -->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="@string/title_kode_surat_izin"
+                        android:textAppearance="?attr/textAppearanceBody2" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvKdSuratIzin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@string/dummy_kode_surat"
+                        android:textAppearance="?attr/textAppearanceHeadline6" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

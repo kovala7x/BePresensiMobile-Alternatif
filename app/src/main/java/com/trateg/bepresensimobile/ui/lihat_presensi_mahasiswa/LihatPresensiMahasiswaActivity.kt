@@ -1,5 +1,6 @@
 package com.trateg.bepresensimobile.ui.lihat_presensi_mahasiswa
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import com.trateg.bepresensimobile.R
 import com.trateg.bepresensimobile.model.Jadwal
 import com.trateg.bepresensimobile.model.Kehadiran
 import com.trateg.bepresensimobile.ui.adapter.ListKehadiranAdapter
+import com.trateg.bepresensimobile.ui.detail_presensi_mahasiswa.DetailPresensiMahasiswaActivity
 import com.trateg.bepresensimobile.util.Constants
 import kotlinx.android.synthetic.main.activity_lihat_presensi_mahasiswa.*
 
@@ -89,9 +91,16 @@ class LihatPresensiMahasiswaActivity : BaseActivity(), LihatPresensiMahasiswaCon
         listKehadiranAdapter.setOnItemClickCallback(object :
             ListKehadiranAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Kehadiran) {
-                showToast("Kode sesi " + data.kdKehadiran + " dipanggil!")
+                onDetailPresensiClicked(data)
             }
         })
+    }
+
+    override fun onDetailPresensiClicked(data: Kehadiran) {
+        val intent = Intent(this, DetailPresensiMahasiswaActivity::class.java)
+        intent.putExtra(Constants.DATA_JADWAL, dataJadwal)
+        intent.putExtra(Constants.DATA_KEHADIRAN, data)
+        startActivity(intent)
     }
 
     override fun attachPresenter(presenter: LihatPresensiMahasiswaContract.Presenter) {

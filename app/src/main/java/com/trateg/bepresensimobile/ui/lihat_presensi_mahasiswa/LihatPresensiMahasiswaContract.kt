@@ -18,5 +18,6 @@ interface LihatPresensiMahasiswaContract {
         fun showBackButton(enabled: Boolean)
         fun setCardData(data: Jadwal)
         fun setRecyclerviewKehadiran(data: List<Kehadiran>)
+        fun onDetailPresensiClicked(data: Kehadiran)
     }
 }

@@ -61,7 +61,6 @@
     <string name="dummy_action_status">Menyimpan data presensi...</string>
     <string name="title_tanggal">Tanggal</string>
     <string name="title_kode_ruangan">Kode Ruangan</string>
-    <string name="title_sesi_dibuka">Sesi Dibuka</string>
     <string name="dummy_jam_mulai">07:00</string>
     <string name="title_sesi_ditutup">Sesi Ditutup</string>
     <string name="dummy_jam_berakhir">08:20</string>
@@ -88,5 +87,12 @@
     <string name="title_sesi_dihadiri">Sesi Dihadiri</string>
     <string name="dummy_jml_sesi_dihadiri">3 Sesi</string>
     <string name="dummy_jml_sesi">4 Sesi</string>
+    <string name="title_sesi_perkuliahan">Sesi Perkuliahan</string>
+    <string name="title_sesi_dibuka">Sesi Dibuka</string>
+    <string name="dummy_sesi_dibuka">07:00</string>
+    <string name="title_jam_presensi">Jam Presensi</string>
+    <string name="dummy_jam_presensi">07:08</string>
+    <string name="title_status_presensi">Status Presensi</string>
+    <string name="title_kode_surat_izin">Kode Surat Izin</string>
 
 </resources>

@@ -17,6 +17,10 @@ interface ApiService {
     suspend fun getDetailBeritaAcara(@Path("kdBeritaAcara") kdBeritaAcara :String) : Response<BaseResponse>
 
     @Headers("Accept: application/json")
+    @GET("mobile/presensi/detail-kehadiran/{kdKehadiran}")
+    suspend fun getDetailKehadiran(@Path("kdKehadiran") kdKehadiran :Int) : Response<BaseResponse>
+
+    @Headers("Accept: application/json")
     @GET("mobile/jadwal/mahasiswa/{nim}")
     suspend fun getJadwalMhs(@Path("nim") nim :String) : Response<BaseResponseList>
 
