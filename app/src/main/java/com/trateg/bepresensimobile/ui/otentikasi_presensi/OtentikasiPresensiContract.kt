@@ -3,6 +3,7 @@ package com.trateg.bepresensimobile.ui.otentikasi_presensi
 import com.trateg.bepresensimobile.BasePresenter
 import com.trateg.bepresensimobile.BaseView
 import com.trateg.bepresensimobile.model.BaseResponse
+import com.trateg.bepresensimobile.model.BaseResponseList
 import com.trateg.bepresensimobile.model.Beacon
 import com.trateg.bepresensimobile.model.Jadwal
 import com.trateg.bepresensimobile.util.SessionManager
@@ -29,7 +30,7 @@ class OtentikasiPresensiContract {
         fun onError(msg: String)
         fun onBukaSesiPresensiSuccess(data: BaseResponse)
         fun onTutupSesiPresensiSuccess(data: BaseResponse)
-        fun onCatatPresensiSuccess(data: BaseResponse)
+        fun onCatatPresensiSuccess(data: BaseResponseList)
         fun showBackButton(enabled: Boolean)
         fun showToast(msg: String)
         fun goToHome()

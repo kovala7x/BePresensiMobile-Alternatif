@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.trateg.bepresensimobile.BaseActivity
 import com.trateg.bepresensimobile.R
 import com.trateg.bepresensimobile.model.BaseResponse
+import com.trateg.bepresensimobile.model.BaseResponseList
 import com.trateg.bepresensimobile.model.Beacon
 import com.trateg.bepresensimobile.model.Jadwal
 import com.trateg.bepresensimobile.util.Constants
@@ -187,7 +188,7 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
         goToHome()
     }
 
-    override fun onCatatPresensiSuccess(data: BaseResponse) {
+    override fun onCatatPresensiSuccess(data: BaseResponseList) {
         showToast("Berhasil catat presensi!")
         goToHome()
     }

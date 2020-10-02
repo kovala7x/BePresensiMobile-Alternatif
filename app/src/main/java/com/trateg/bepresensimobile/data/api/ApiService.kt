@@ -46,7 +46,7 @@ interface ApiService {
     @Headers("Accept: application/json")
     @POST("mobile/presensi/catat")
     suspend fun postCatatPresensi(@Part("nim") nim: RequestBody,
-                                  @Part("kd_jadwal") kdJadwal: RequestBody) : Response<BaseResponse>
+                                  @Part("kd_jadwal") kdJadwal: RequestBody) : Response<BaseResponseList>
 
     @Multipart
     @Headers("Accept: application/json")

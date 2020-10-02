@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.trateg.bepresensimobile.data.api.ApiFactory
 import com.trateg.bepresensimobile.model.BaseResponse
+import com.trateg.bepresensimobile.model.BaseResponseList
 import com.trateg.bepresensimobile.model.Jadwal
 import com.trateg.bepresensimobile.util.Constants
 import com.trateg.bepresensimobile.util.ErrorUtils
@@ -206,7 +207,7 @@ class OtentikasiPresensiPresenter(private var mView: OtentikasiPresensiContract.
         val mKdJadwal: String = data.kdJadwal!!
         val NIM: RequestBody = mNIM.toRequestBody(mNIM.toMediaTypeOrNull())
         val kdJadwal: RequestBody = mKdJadwal.toRequestBody(mKdJadwal.toMediaTypeOrNull())
-        var response: Response<BaseResponse>? = null
+        var response: Response<BaseResponseList>? = null
         GlobalScope.launch(Dispatchers.IO) {
             // Menampilkan loading
             withContext(Dispatchers.Main) {
@@ -238,7 +239,7 @@ class OtentikasiPresensiPresenter(private var mView: OtentikasiPresensiContract.
                     }
 
                     !response!!.isSuccessful -> { // Jika request gagal
-                        val errorResponse = ErrorUtils.parseError(response!!)
+                        val errorResponse = ErrorUtils.parseErrorList(response!!)
                         withContext(Dispatchers.Main) {
                             Log.d(TAG, "catatPresensi: " + errorResponse.message!!.toString())
                             mView?.onError(errorResponse.message.toString())
