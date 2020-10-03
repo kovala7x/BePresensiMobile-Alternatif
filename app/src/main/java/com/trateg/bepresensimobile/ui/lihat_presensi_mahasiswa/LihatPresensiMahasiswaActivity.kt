@@ -77,6 +77,8 @@ class LihatPresensiMahasiswaActivity : BaseActivity(), LihatPresensiMahasiswaCon
         tvJenisPerkuliahan.text = data.jenisPerkuliahan
         tvKdRuangan.text = data.ruang?.kdRuang
         tvTglPresensi.text = mPresenter?.convertDate(data.kehadiran?.first()!!.tglPresensi!!)
+        tvJamMulai.text = data.sesiMulai?.jamMulai!!.dropLast(3)
+        tvJamBerakhir.text = data.sesiBerakhir?.jamBerakhir?.dropLast(3)
         tvJumlahSesi.text = jumlahSesi.toString()
         tvJumlahSesiDihadiri.text = jumlahSesiDihadiri.toString()
     }
