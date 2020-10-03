@@ -55,7 +55,7 @@
                     android:layout_marginTop="12dp"
                     android:background="@drawable/icon_background"
                     android:padding="10dp"
-                    android:src="@drawable/tab_surat"
+                    android:src="@drawable/ic_baseline_work_off_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,7 +121,7 @@
                     android:layout_marginTop="12dp"
                     android:background="@drawable/icon_background"
                     android:padding="10dp"
-                    android:src="@drawable/tab_surat"
+                    android:src="@drawable/ic_baseline_local_hospital_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -188,7 +188,7 @@
                     android:layout_marginTop="12dp"
                     android:background="@drawable/icon_background"
                     android:padding="10dp"
-                    android:src="@drawable/tab_surat"
+                    android:src="@drawable/ic_baseline_work_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
