@@ -37,6 +37,12 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -90,4 +96,7 @@ dependencies {
 
     // Android Biometric
     implementation 'androidx.biometric:biometric:1.1.0-alpha02'
+
+    // Cubeacon SDK
+    implementation 'com.eyro.cubeacon:cubeacon:2.0.0@aar'
 }
