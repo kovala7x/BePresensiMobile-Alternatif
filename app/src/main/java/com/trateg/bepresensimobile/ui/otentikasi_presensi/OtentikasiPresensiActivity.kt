@@ -1,10 +1,13 @@
 package com.trateg.bepresensimobile.ui.otentikasi_presensi
 
 import android.os.Bundle
+import android.os.RemoteException
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import com.eyro.cubeacon.*
 import com.google.android.material.snackbar.Snackbar
 import com.trateg.bepresensimobile.BaseActivity
 import com.trateg.bepresensimobile.R
@@ -16,17 +19,22 @@ import com.trateg.bepresensimobile.util.Constants
 import com.trateg.bepresensimobile.util.SessionManager
 import kotlinx.android.synthetic.main.activity_otentikasi_presensi.*
 import kotlinx.coroutines.*
+import java.util.*
 import java.util.concurrent.Executor
 
-class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.View {
+class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.View,
+    CBServiceListener {
 
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private lateinit var cubeacon: Cubeacon
+    private lateinit var region: CBRegion
 
     private var mPresenter: OtentikasiPresensiContract.Presenter? = null
     private var actionType: Int = 0
     private var dataJadwal: Jadwal? = null
+    private var isBeaconFound: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +44,8 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
     }
 
     override fun initView() {
+        Logger.setLogLevel(LogLevel.DEBUG)
+        Cubeacon.initialize(this)
         getIntentExtraData()
         setNamaMatakuliah(
             matakuliah = dataJadwal!!.matakuliah?.namaMatakuliah!!
@@ -48,29 +58,41 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
         showBackButton(true)
         mPresenter?.setupSession()
         initAuthenticator()
-        GlobalScope.launch(Dispatchers.Main){
-            if(actionType == Constants.TUTUP_PRESENSI){
-                imgBeacon.visibility = View.GONE
-                setLokasiPresensi(false,"-")
-                setActionStatus(false,"-")
-                biometricPrompt.authenticate(promptInfo)
-            }else{
-                when (scanBeacon(dataBeacon = dataJadwal!!.ruang?.beacon!!)) {
-                    Constants.FOUND -> biometricPrompt.authenticate(promptInfo)
-                    Constants.NOT_FOUND -> onError("Beacon tidak ditemukan, silahkan coba lagi")
-                }
-            }
-        }
-        if(actionType != Constants.TUTUP_PRESENSI){
-            swipeRefreshOtentikasiPresensi.setOnRefreshListener {
-                GlobalScope.launch(Dispatchers.Main) {
-                    when (scanBeacon(dataBeacon = dataJadwal!!.ruang?.beacon!!)) {
-                        Constants.FOUND -> biometricPrompt.authenticate(promptInfo)
-                        Constants.NOT_FOUND -> onError("Beacon tidak ditemukan, silahkan coba lagi")
+        if (actionType == Constants.TUTUP_PRESENSI) {
+            imgBeacon.visibility = View.GONE
+            setLokasiPresensi(false, "-")
+            setActionStatus(false, "-")
+            biometricPrompt.authenticate(promptInfo)
+        } else {
+            GlobalScope.launch(Dispatchers.Main) {
+                when (connectBeacon(dataBeacon = dataJadwal!!.ruang?.beacon!!)) {
+                    Constants.FOUND ->{
+                        disconnectBeacon()
+                        biometricPrompt.authenticate(promptInfo)
+                    }
+                    Constants.NOT_FOUND -> {
+                        disconnectBeacon()
+                        onError("Beacon tidak ditemukan, silahkan coba lagi")
                     }
                 }
             }
-        }else{
+        }
+        if (actionType != Constants.TUTUP_PRESENSI) {
+            swipeRefreshOtentikasiPresensi.setOnRefreshListener {
+                GlobalScope.launch(Dispatchers.Main) {
+                    when (connectBeacon(dataBeacon = dataJadwal!!.ruang?.beacon!!)) {
+                        Constants.FOUND ->{
+                            disconnectBeacon()
+                            biometricPrompt.authenticate(promptInfo)
+                        }
+                        Constants.NOT_FOUND -> {
+                            disconnectBeacon()
+                            onError("Beacon tidak ditemukan, silahkan coba lagi")
+                        }
+                    }
+                }
+            }
+        } else {
             swipeRefreshOtentikasiPresensi.isEnabled = false
         }
     }
@@ -111,26 +133,53 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
         tvActionStatus.text = action
     }
 
-    override suspend fun scanBeacon(dataBeacon: Beacon): Boolean = withContext(Dispatchers.IO) {
-        var found: Boolean
-        withContext(Dispatchers.Main){
+    override suspend fun connectBeacon(dataBeacon: Beacon): Boolean {
+        var found = false
+        if (SystemRequirementManager.checkAllRequirementUsingDefaultDialog(this)) {
+            // connecting to Cubeacon service when all requirements completed
+            region = CBRegion(
+                "com.trateg.bepresensimobile.ui.otentikasi_presensi",
+                UUID.fromString(dataBeacon.macAddress),
+                dataBeacon.major!!.toInt(),
+                dataBeacon.minor!!.toInt()
+            )
+            cubeacon = Cubeacon.getInstance()
+            cubeacon.addMonitoringListener(object : CBMonitoringListener {
+                override fun didEnterRegion(p0: CBRegion?) {
+                    isBeaconFound = true
+                }
+
+                override fun didExitRegion(p0: CBRegion?) {
+                    isBeaconFound = false
+                }
+
+                override fun didDetermineStateForRegion(p0: MonitoringState?, p1: CBRegion?) {
+                    // do nothing
+                }
+
+            })
+            cubeacon.connect(this)
+
             showProgress()
             setActionStatus(action = "Memindai beacon ${dataBeacon.kdBeacon}", visible = true)
-        }
-        val result = withTimeoutOrNull(Constants.REQUEST_TIMEOUT) {
-            //TODO("Not yet implemented")
-            delay(8000)
-        }
-        if(result == null){
-            found = false
-        }else{
-            withContext(Dispatchers.Main){
-                setActionStatus(action = "Beacon ${dataBeacon.kdBeacon} ditemukan", visible = true)
-                hideProgress()
+
+            // Wait until timeout or beacon found
+            val result = withTimeoutOrNull(Constants.REQUEST_TIMEOUT) {
+                while (!isBeaconFound) {
+                    found = isBeaconFound
+                    delay(500)
+                }
             }
-            found = true
+            hideProgress()
+            if (result != null) {
+                setActionStatus(action = "Beacon ${dataBeacon.kdBeacon} ditemukan", visible = true)
+            }
         }
-        found
+        return found
+    }
+
+    override fun disconnectBeacon() {
+        cubeacon.disconnect(this)
     }
 
     override fun initAuthenticator() {
@@ -215,7 +264,13 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
         mPresenter = presenter
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        detachPresenter()
+    }
+
     override fun detachPresenter() {
+        disconnectBeacon()
         mPresenter?.onDestroy()
         mPresenter = null
     }
@@ -226,5 +281,14 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
 
     override fun hideProgress() {
         swipeRefreshOtentikasiPresensi.isRefreshing = false
+    }
+
+    override fun onBeaconServiceConnect() {
+        try {
+            // start monitoring beacon using region
+            cubeacon.startMonitoringForRegion(region)
+        } catch (e: RemoteException) {
+            Log.e("onBeaconServiceConnect", "Error while start monitoring beacon, " + e)
+        }
     }
 }

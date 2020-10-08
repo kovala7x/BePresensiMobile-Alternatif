@@ -24,7 +24,8 @@ class OtentikasiPresensiContract {
         fun setNamaMatakuliah(matakuliah: String)
         fun setLokasiPresensi(visible: Boolean, lokasi: String)
         fun setActionStatus(visible: Boolean, action: String)
-        suspend fun scanBeacon(dataBeacon: Beacon): Boolean
+        suspend fun connectBeacon(dataBeacon: Beacon): Boolean
+        fun disconnectBeacon()
         fun initAuthenticator()
         fun initSession(): SessionManager
         fun onError(msg: String)
