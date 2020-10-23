@@ -4,7 +4,7 @@ class Constants {
 
     companion object {
         const val BASE_URL = "http://192.168.43.218:8000/api/"
-        const val REQUEST_TIMEOUT = 10000L
+        const val REQUEST_TIMEOUT = 20000L
         const val PRIVATE_MODE = 0
         const val PREF_NAME = "UserManager"
         const val KEY_TOKEN = "token"
@@ -24,5 +24,6 @@ class Constants {
         const val DATA_PERSENTASE = "data_persentase"
         const val FOUND = true
         const val NOT_FOUND = false
+        const val BEACON_RANGE = 4.00
     }
 }

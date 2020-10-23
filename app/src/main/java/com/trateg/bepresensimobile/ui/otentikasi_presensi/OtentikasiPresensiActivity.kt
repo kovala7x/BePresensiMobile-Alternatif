@@ -46,6 +46,7 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
     override fun initView() {
         Logger.setLogLevel(LogLevel.DEBUG)
         Cubeacon.initialize(this)
+        cubeacon = Cubeacon.getInstance()
         getIntentExtraData()
         setNamaMatakuliah(
             matakuliah = dataJadwal!!.matakuliah?.namaMatakuliah!!
@@ -143,21 +144,16 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
                 dataBeacon.major!!.toInt(),
                 dataBeacon.minor!!.toInt()
             )
-            cubeacon = Cubeacon.getInstance()
-            cubeacon.addMonitoringListener(object : CBMonitoringListener {
-                override fun didEnterRegion(p0: CBRegion?) {
-                    isBeaconFound = true
+            cubeacon.addRangingListener { p0, p1 ->
+                if (p0?.size!! > 0) {
+                    p0.forEach {
+                        if (it.accuracy < Constants.BEACON_RANGE) {
+                            isBeaconFound = true
+                            Log.d("Otentikasi", "didRangeBeaconsInRegion: Beacon detected in " + it.accuracy + " meters.")
+                        }
+                    }
                 }
-
-                override fun didExitRegion(p0: CBRegion?) {
-                    isBeaconFound = false
-                }
-
-                override fun didDetermineStateForRegion(p0: MonitoringState?, p1: CBRegion?) {
-                    // do nothing
-                }
-
-            })
+            }
             cubeacon.connect(this)
 
             showProgress()
@@ -165,14 +161,18 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
 
             // Wait until timeout or beacon found
             val result = withTimeoutOrNull(Constants.REQUEST_TIMEOUT) {
-                while (!isBeaconFound) {
-                    found = isBeaconFound
+                while (!found) {
+                    if(isBeaconFound == true){
+                        found = isBeaconFound
+                    }
                     delay(500)
                 }
             }
             hideProgress()
             if (result != null) {
                 setActionStatus(action = "Beacon ${dataBeacon.kdBeacon} ditemukan", visible = true)
+            }else{
+                setActionStatus(action = "-", visible = false)
             }
         }
         return found
@@ -198,7 +198,6 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
                     result: BiometricPrompt.AuthenticationResult
                 ) {
                     super.onAuthenticationSucceeded(result)
-                    showToast("Otentikasi berhasil!")
                     mPresenter?.onUserAuthenticated(actionType, dataJadwal!!)
                 }
 
@@ -266,11 +265,11 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
 
     override fun onDestroy() {
         super.onDestroy()
+        disconnectBeacon()
         detachPresenter()
     }
 
     override fun detachPresenter() {
-        disconnectBeacon()
         mPresenter?.onDestroy()
         mPresenter = null
     }
@@ -286,7 +285,7 @@ class OtentikasiPresensiActivity : BaseActivity(), OtentikasiPresensiContract.Vi
     override fun onBeaconServiceConnect() {
         try {
             // start monitoring beacon using region
-            cubeacon.startMonitoringForRegion(region)
+            cubeacon.startRangingBeaconsInRegion(region)
         } catch (e: RemoteException) {
             Log.e("onBeaconServiceConnect", "Error while start monitoring beacon, " + e)
         }
