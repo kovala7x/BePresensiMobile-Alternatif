@@ -25,5 +25,8 @@ class Constants {
         const val FOUND = true
         const val NOT_FOUND = false
         const val BEACON_RANGE = 4.00
+        const val SURAT_DISPEN = "D"
+        const val SURAT_IZIN = "I"
+        const val SURAT_SAKIT = "S"
     }
 }

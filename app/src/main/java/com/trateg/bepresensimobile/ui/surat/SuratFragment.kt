@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
-import com.trateg.bepresensimobile.ui.ajukan_surat.AjukanSuratActivity
+import com.trateg.bepresensimobile.ui.pilih_jenis_surat.PilihJenisSuratActivity
 import kotlinx.android.synthetic.main.fragment_surat.*
 
 /**
@@ -27,7 +27,7 @@ class SuratFragment: BaseFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fabSuratBaru.setOnClickListener {
-            startActivity(Intent(it.context,AjukanSuratActivity::class.java))
+            startActivity(Intent(it.context,PilihJenisSuratActivity::class.java))
         }
     }
 

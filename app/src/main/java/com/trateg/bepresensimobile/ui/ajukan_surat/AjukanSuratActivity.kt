@@ -1,27 +1,38 @@
 package com.trateg.bepresensimobile.ui.ajukan_surat
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.trateg.bepresensimobile.R
+import com.trateg.bepresensimobile.util.Constants
 import kotlinx.android.synthetic.main.activity_ajukan_surat.*
 
 class AjukanSuratActivity : AppCompatActivity(), AjukanSuratContract.View {
 
     private var mPresenter: AjukanSuratContract.Presenter? = null
+    private var actionType: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ajukan_surat)
         attachPresenter(AjukanSuratPresenter(this))
-        cardIzin.setOnClickListener {
-            Toast.makeText(this,"Card Surat Izin dipilih!",Toast.LENGTH_SHORT).show()
-        }
-        cardSakit.setOnClickListener {
-            Toast.makeText(this,"Card Surat Sakit dipilih!",Toast.LENGTH_SHORT).show()
-        }
-        cardDispen.setOnClickListener {
-            Toast.makeText(this,"Card Surat Dispen dipilih!",Toast.LENGTH_SHORT).show()
+        initView()
+    }
+
+    override fun initView() {
+        actionType = intent.getStringExtra(Constants.ACTION_TYPE)
+        when(actionType){
+            Constants.SURAT_IZIN ->{
+                title = "Pengajuan Surat Izin"
+                tvJenisSurat.text = title
+            }
+            Constants.SURAT_DISPEN -> {
+                title ="Pengajuan Surat Dispen"
+                tvJenisSurat.text = title
+            }
+            Constants.SURAT_SAKIT -> {
+                title = "Pengajuan Surat Sakit"
+                tvJenisSurat.text = title
+            }
         }
     }
 
