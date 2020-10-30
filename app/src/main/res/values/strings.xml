@@ -96,5 +96,11 @@
     <string name="title_kode_surat_izin">Kode Surat Izin</string>
     <string name="title_jam_mulai">Jam Mulai</string>
     <string name="jam_berakhir">Jam Berakhir</string>
+    <string name="title_catatan">Catatan</string>
+    <string name="title_jam_selesai">Jam Selesai</string>
+    <string name="title_tanggal_selesai">Tanggal Selesai</string>
+    <string name="title_tanggal_mulai">Tanggal Mulai</string>
+    <string name="title_ajukan">Ajukan</string>
+    <string name="title_sepanjang_hari">Sepanjang Hari</string>
 
 </resources>

@@ -36,6 +36,34 @@ interface ApiService {
     @GET("mobile/riwayat-kehadiran/{nim}")
     suspend fun getRiwayatKehadiran(@Path("nim") nim :String) : Response<BaseResponseList>
 
+    @Multipart
+    @Headers("Accept: application/json")
+    @POST("mobile/surat-izin/ajukan-dispen/")
+    suspend fun postAjukanSuratDispen(@Part("nim") nim: String,
+                                      @Part("tgl_mulai") tglMulai: String,
+                                      @Part("tgl_selesai") tglSelesai: String,
+                                      @Part("jam_mulai") jamMulai: String?,
+                                      @Part("jam_selesai") jamSelesai: String?,
+                                      @Part("catatan_surat") catatanSurat: String?) : Response<BaseResponse>
+
+    @Multipart
+    @Headers("Accept: application/json")
+    @POST("mobile/surat-izin/ajukan-izin/")
+    suspend fun postAjukanSuratIzin(@Part("nim") nim: String,
+                                      @Part("tgl_mulai") tglMulai: String,
+                                      @Part("tgl_selesai") tglSelesai: String,
+                                      @Part("jam_mulai") jamMulai: String?,
+                                      @Part("jam_selesai") jamSelesai: String?,
+                                      @Part("catatan_surat") catatanSurat: String?) : Response<BaseResponse>
+
+    @Multipart
+    @Headers("Accept: application/json")
+    @POST("mobile/surat-izin/ajukan-sakit/")
+    suspend fun postAjukanSuratSakit(@Part("nim") nim: String,
+                                      @Part("tgl_mulai") tglMulai: String,
+                                      @Part("tgl_selesai") tglSelesai: String,
+                                      @Part("catatan_surat") catatanSurat: String?) : Response<BaseResponse>
+
     @Headers("Accept: application/json")
     @POST("mobile/jadwal/sesi-presensi/buka/{kd_jadwal}")
     suspend fun postBukaSesiPresensi(@Path("kd_jadwal") kdJadwal :String) : Response<BaseResponse>
