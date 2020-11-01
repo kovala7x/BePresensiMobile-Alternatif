@@ -60,7 +60,7 @@
                         android:textColor="?android:attr/textColorSecondary" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvWaktu"
+                        android:id="@+id/tvKodeSurat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -86,7 +86,7 @@
                         android:textColor="?android:attr/textColorSecondary" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvDosenPengajar"
+                        android:id="@+id/tvStatusSurat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

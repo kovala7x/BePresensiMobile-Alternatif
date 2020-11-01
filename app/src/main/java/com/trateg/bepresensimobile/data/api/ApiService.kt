@@ -21,6 +21,10 @@ interface ApiService {
     suspend fun getDetailKehadiran(@Path("kdKehadiran") kdKehadiran :Int) : Response<BaseResponse>
 
     @Headers("Accept: application/json")
+    @GET("mobile/presensi/detail-kehadiran/{kdSuratIzin}")
+    suspend fun getDetailSurat(@Path("kdSuratIzin") kdSuratIzin :Int) : Response<BaseResponse>
+
+    @Headers("Accept: application/json")
     @GET("mobile/jadwal/mahasiswa/{nim}")
     suspend fun getJadwalMhs(@Path("nim") nim :String) : Response<BaseResponseList>
 
@@ -35,6 +39,22 @@ interface ApiService {
     @Headers("Accept: application/json")
     @GET("mobile/riwayat-kehadiran/{nim}")
     suspend fun getRiwayatKehadiran(@Path("nim") nim :String) : Response<BaseResponseList>
+
+    @Headers("Accept: application/json")
+    @GET("mobile/surat-izin/daftar-surat-diajukan/")
+    suspend fun getSuratDiajukan(@Query("nim") nim :String) : Response<BaseResponseList>
+
+    @Headers("Accept: application/json")
+    @GET("mobile/surat-izin/daftar-surat-diproses/")
+    suspend fun getSuratDiproses(@Query("nim") nim :String) : Response<BaseResponseList>
+
+    @Headers("Accept: application/json")
+    @GET("mobile/surat-izin/surat-diproses-dosen/")
+    suspend fun getSuratDiprosesDosen(@Query("kd_dosen") kdDosen :String) : Response<BaseResponseList>
+
+    @Headers("Accept: application/json")
+    @GET("mobile/surat-izin/surat-belum-diproses-dosen/")
+    suspend fun getSuratBelumDiprosesDosen(@Query("kd_dosen") kdDosen :String) : Response<BaseResponseList>
 
     @Multipart
     @Headers("Accept: application/json")
@@ -90,6 +110,18 @@ interface ApiService {
     suspend fun postBuatBeritaAcara(@Part("kd_jadwal") kdJadwal: RequestBody,
                                     @Part("desk_perkuliahan") deskPerkuliahan: RequestBody,
                                     @Part("desk_penugasan") deskPenugasan: RequestBody) : Response<BaseResponse>
+
+    @Multipart
+    @Headers("Accept: application/json")
+    @POST("mobile/surat-izin/setujui-surat/")
+    suspend fun postSetujuiSurat(@Part("kd_surat_izin") kdSuratIzin: String,
+                                 @Part("catatan_wali_dosen") catatanWaliDosen: String) : Response<BaseResponse>
+
+    @Multipart
+    @Headers("Accept: application/json")
+    @POST("mobile/surat-izin/tolak-surat/")
+    suspend fun postTolakSurat(@Part("kd_surat_izin") kdSuratIzin: String,
+                               @Part("catatan_wali_dosen") catatanWaliDosen: String) : Response<BaseResponse>
 
     @Multipart
     @Headers("Accept: application/json")

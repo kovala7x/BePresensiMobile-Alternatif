@@ -102,5 +102,8 @@
     <string name="title_tanggal_mulai">Tanggal Mulai</string>
     <string name="title_ajukan">Ajukan</string>
     <string name="title_sepanjang_hari">Sepanjang Hari</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_surat_diajukan">Surat Diajukan</string>
+    <string name="title_surat_diproses">Surat Diproses</string>
 
 </resources>

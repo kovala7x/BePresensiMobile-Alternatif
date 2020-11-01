@@ -1,24 +1,27 @@
 package com.trateg.bepresensimobile.ui.surat
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.tabs.TabLayoutMediator
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
-import com.trateg.bepresensimobile.ui.pilih_jenis_surat.PilihJenisSuratActivity
+import com.trateg.bepresensimobile.ui.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_surat.*
+
 
 /**
  * Created by hanilozmen on 8/24/2019.
  */
-class SuratFragment: BaseFragment(),
+class SuratFragment : BaseFragment(),
     SuratContract.View {
-    private lateinit var mRootView : View
+    private lateinit var mRootView: View
     private var mPresenter: SuratContract.Presenter? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         mRootView = inflater.inflate(R.layout.fragment_surat, container, false)
         attachPresenter(SuratPresenter(this))
         return mRootView
@@ -26,9 +29,11 @@ class SuratFragment: BaseFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fabSuratBaru.setOnClickListener {
-            startActivity(Intent(it.context,PilihJenisSuratActivity::class.java))
-        }
+        viewPager.adapter = ViewPagerAdapter(this)
+        viewPager.isUserInputEnabled = false
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = (viewPager.adapter as ViewPagerAdapter).mFragmentNames[position]
+        }.attach()
     }
 
     override fun onDestroyView() {
