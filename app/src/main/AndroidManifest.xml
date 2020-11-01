@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.pilih_jenis_surat.PilihJenisSuratActivity"></activity>
+        <activity android:name=".ui.detail_surat.DetailSuratActivity"></activity>
+        <activity android:name=".ui.pilih_jenis_surat.PilihJenisSuratActivity" />
         <activity android:name=".ui.detail_presensi_mahasiswa.DetailPresensiMahasiswaActivity" />
         <activity android:name=".ui.lihat_presensi_mahasiswa.LihatPresensiMahasiswaActivity" />
         <activity android:name=".ui.ubah_status_presensi.UbahStatusPresensiActivity" />

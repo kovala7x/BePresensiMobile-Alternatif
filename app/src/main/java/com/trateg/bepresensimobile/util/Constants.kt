@@ -23,6 +23,7 @@ class Constants {
         const val DATA_JADWAL = "data_jadwal"
         const val DATA_KEHADIRAN = "data_kehadiran"
         const val DATA_PERSENTASE = "data_persentase"
+        const val DATA_SURAT = "data_surat"
         const val FOUND = true
         const val NOT_FOUND = false
         const val BEACON_RANGE = 4.00

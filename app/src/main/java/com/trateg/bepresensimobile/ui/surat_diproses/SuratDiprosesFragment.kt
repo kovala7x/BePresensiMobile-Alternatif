@@ -1,5 +1,6 @@
 package com.trateg.bepresensimobile.ui.surat_diproses
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
 import com.trateg.bepresensimobile.model.SuratIzin
 import com.trateg.bepresensimobile.ui.adapter.ListSuratIzinAdapter
+import com.trateg.bepresensimobile.ui.detail_surat.DetailSuratActivity
+import com.trateg.bepresensimobile.util.Constants
 import com.trateg.bepresensimobile.util.SessionManager
 import kotlinx.android.synthetic.main.fragment_surat_diproses.*
 import kotlinx.coroutines.CoroutineScope
@@ -36,28 +39,14 @@ class SuratDiprosesFragment : BaseFragment(), SuratDiprosesContract.View {
         initView()
     }
 
-    override fun onResume() {
-        super.onResume()
-        CoroutineScope(Dispatchers.Main).launch {
-            dataSuratDiproses = mPresenter?.getSuratDiproses()
-            if (dataSuratDiproses != null) {
-                onGetSuratDiprosesSuccess(dataSuratDiproses!!)
-            }
-        }
-    }
-
     override fun initView() {
         tvKeteranganSuratDiproses.visibility = View.INVISIBLE
         mPresenter?.setupSession()
         rvSuratDiproses.setHasFixedSize(true)
         rvSuratDiproses.layoutManager = LinearLayoutManager(requireContext())
+        onSwipeRefresh()
         swipeRefreshSuratDiproses.setOnRefreshListener {
-            CoroutineScope(Dispatchers.Main).launch {
-                dataSuratDiproses = mPresenter?.getSuratDiproses()
-                if (dataSuratDiproses != null) {
-                    onGetSuratDiprosesSuccess(dataSuratDiproses!!)
-                }
-            }
+            onSwipeRefresh()
         }
     }
 
@@ -78,16 +67,16 @@ class SuratDiprosesFragment : BaseFragment(), SuratDiprosesContract.View {
     }
 
     override fun onGetSuratDiprosesSuccess(data: List<SuratIzin>) {
-        if(mPresenter?.isMahasiswa()!!){
-            if(data.isEmpty()){
+        if (mPresenter?.isMahasiswa()!!) {
+            if (data.isEmpty()) {
                 tvKeteranganSuratDiproses.text = "Tidak terdapat surat yang diproses."
-            }else{
+            } else {
                 tvKeteranganSuratDiproses.text = "Terdapat ${data.size} surat yang diproses."
             }
-        }else{
-            if(data.isEmpty()){
+        } else {
+            if (data.isEmpty()) {
                 tvKeteranganSuratDiproses.text = "Tidak terdapat surat yang sudah diproses."
-            }else{
+            } else {
                 tvKeteranganSuratDiproses.text = "Terdapat ${data.size} surat yang sudah diproses."
             }
         }
@@ -108,9 +97,19 @@ class SuratDiprosesFragment : BaseFragment(), SuratDiprosesContract.View {
         goToDetailSuratDiproses(data)
     }
 
+    override fun onSwipeRefresh() {
+        CoroutineScope(Dispatchers.Main).launch {
+            dataSuratDiproses = mPresenter?.getSuratDiproses()
+            if (dataSuratDiproses != null) {
+                onGetSuratDiprosesSuccess(dataSuratDiproses!!)
+            }
+        }
+    }
+
     override fun goToDetailSuratDiproses(data: SuratIzin) {
-        //TODO("Not yet implemented")
-        showToast("Surat ${data.kdSuratIzin} ditekan!")
+        val intent = Intent(requireContext(), DetailSuratActivity::class.java)
+        intent.putExtra(Constants.DATA_SURAT, data)
+        startActivity(intent)
     }
 
     override fun attachPresenter(presenter: SuratDiprosesContract.Presenter) {

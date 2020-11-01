@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.trateg.bepresensimobile.R
 import com.trateg.bepresensimobile.model.SuratIzin
+import com.trateg.bepresensimobile.util.TextHelper
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -26,6 +27,7 @@ class ListSuratIzinAdapter(val listSuratIzin: ArrayList<SuratIzin>) :
         var tvJenisSurat: TextView = itemView.findViewById(R.id.tvJenisSurat)
         var tvTglSurat: TextView = itemView.findViewById(R.id.tvTglSurat)
         var tvKodeSurat: TextView = itemView.findViewById(R.id.tvKodeSurat)
+        var tvNamaMhs: TextView = itemView.findViewById(R.id.tvNamaMhs)
         var tvStatusSurat: TextView = itemView.findViewById(R.id.tvStatusSurat)
     }
 
@@ -40,6 +42,7 @@ class ListSuratIzinAdapter(val listSuratIzin: ArrayList<SuratIzin>) :
         holder.tvJenisSurat.text = "Surat " + surat.jenisIzin?.keteranganPresensi
         holder.tvTglSurat.text = convertDate(surat.tglMulai!!)
         holder.tvKodeSurat.text = surat.kdSuratIzin
+        holder.tvNamaMhs.text = TextHelper.captEachWord(surat.mahasiswa?.namaMahasiswa!!)
         holder.tvStatusSurat.text = surat.statusSurat?.keteranganSurat
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(surat) }
     }
@@ -55,7 +58,7 @@ class ListSuratIzinAdapter(val listSuratIzin: ArrayList<SuratIzin>) :
             val sdf = SimpleDateFormat(sourcePattern, Locale.getDefault())
             val tanggal: Date = sdf.parse(date)!!
 
-            val targetPattern = "dd/MM/yyyy"
+            val targetPattern = "d MMM yyyy"
             val sdf2 = SimpleDateFormat(targetPattern, Locale.getDefault())
             dateString = sdf2.format(tanggal)
         } catch (e: Exception) {

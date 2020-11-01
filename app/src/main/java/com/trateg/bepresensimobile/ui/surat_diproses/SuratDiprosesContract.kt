@@ -18,6 +18,7 @@ interface SuratDiprosesContract {
         fun showToast(msg: String)
         fun onGetSuratDiprosesSuccess(data: List<SuratIzin>)
         fun onItemSuratIzinClicked(data: SuratIzin)
+        fun onSwipeRefresh()
         fun goToDetailSuratDiproses(data: SuratIzin)
     }
 }

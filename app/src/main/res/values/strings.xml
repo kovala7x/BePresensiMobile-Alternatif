@@ -105,5 +105,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_surat_diajukan">Surat Diajukan</string>
     <string name="title_surat_diproses">Surat Diproses</string>
-
+    <string name="title_catatan_izin">Catatan Izin</string>
+    <string name="title_catatan_wali_dosen">Catatan Wali Dosen</string>
+    <string name="title_tolak">Tolak</string>
+    <string name="title_setuju">Setuju</string>
+    <string name="title_nama">Nama:</string>
 </resources>

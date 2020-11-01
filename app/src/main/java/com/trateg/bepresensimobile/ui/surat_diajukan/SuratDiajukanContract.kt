@@ -20,6 +20,7 @@ interface SuratDiajukanContract {
         fun onGetSuratDiajukanSuccess(data: List<SuratIzin>)
         fun onItemSuratIzinClicked(data: SuratIzin)
         fun onFabSuratBaruClicked()
+        fun onSwipeRefresh()
         fun goToDetailSuratDiajukan(data: SuratIzin)
     }
 }

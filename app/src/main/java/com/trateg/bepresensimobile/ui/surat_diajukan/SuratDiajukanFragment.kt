@@ -12,7 +12,9 @@ import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
 import com.trateg.bepresensimobile.model.SuratIzin
 import com.trateg.bepresensimobile.ui.adapter.ListSuratIzinAdapter
+import com.trateg.bepresensimobile.ui.detail_surat.DetailSuratActivity
 import com.trateg.bepresensimobile.ui.pilih_jenis_surat.PilihJenisSuratActivity
+import com.trateg.bepresensimobile.util.Constants
 import com.trateg.bepresensimobile.util.SessionManager
 import kotlinx.android.synthetic.main.fragment_surat_diajukan.*
 import kotlinx.coroutines.CoroutineScope
@@ -38,38 +40,22 @@ class SuratDiajukanFragment : BaseFragment(),
         initView()
     }
 
-    override fun onResume() {
-        // Perbaiki tampilan tanggal dari surat, lebih baik dd M yyyy
-        // Perbaiki gak bisa di scroll
-        super.onResume()
-        CoroutineScope(Dispatchers.Main).launch {
-            dataSuratDiajukan = mPresenter?.getSuratDiajukan()
-            if(dataSuratDiajukan!=null){
-                onGetSuratDiajukanSuccess(dataSuratDiajukan!!)
-            }
-        }
-    }
-
     override fun initView() {
         tvKeteranganSuratDiajukan.visibility = View.INVISIBLE
         mPresenter?.setupSession()
         rvSuratDiajukan.setHasFixedSize(true)
         rvSuratDiajukan.layoutManager = LinearLayoutManager(requireContext())
-        if(mPresenter?.isMahasiswa()!!) {
+        if (mPresenter?.isMahasiswa()!!) {
             fabSuratBaru.setOnClickListener {
                 onFabSuratBaruClicked()
             }
-        }else{
+        } else {
             fabSuratBaru.visibility = View.GONE
         }
 
+        onSwipeRefresh()
         swipeRefreshSuratDiajukan.setOnRefreshListener {
-            CoroutineScope(Dispatchers.Main).launch {
-                dataSuratDiajukan = mPresenter?.getSuratDiajukan()
-                if(dataSuratDiajukan!=null){
-                    onGetSuratDiajukanSuccess(dataSuratDiajukan!!)
-                }
-            }
+            onSwipeRefresh()
         }
     }
 
@@ -90,16 +76,16 @@ class SuratDiajukanFragment : BaseFragment(),
     }
 
     override fun onGetSuratDiajukanSuccess(data: List<SuratIzin>) {
-        if(mPresenter?.isMahasiswa()!!){
-            if(data.isEmpty()){
+        if (mPresenter?.isMahasiswa()!!) {
+            if (data.isEmpty()) {
                 tvKeteranganSuratDiajukan.text = "Tidak terdapat surat yang diajukan."
-            }else{
+            } else {
                 tvKeteranganSuratDiajukan.text = "Terdapat ${data.size} surat yang diajukan."
             }
-        }else{
-            if(data.isEmpty()){
+        } else {
+            if (data.isEmpty()) {
                 tvKeteranganSuratDiajukan.text = "Tidak terdapat surat yang belum diproses."
-            }else{
+            } else {
                 tvKeteranganSuratDiajukan.text = "Terdapat ${data.size} surat yang belum diproses."
             }
         }
@@ -108,7 +94,8 @@ class SuratDiajukanFragment : BaseFragment(),
         listSuratDiajukan.addAll(data)
         val listSuratIzinAdapter = ListSuratIzinAdapter(listSuratDiajukan)
         rvSuratDiajukan.adapter = listSuratIzinAdapter
-        listSuratIzinAdapter.setOnItemClickCallback(object : ListSuratIzinAdapter.OnItemClickCallback{
+        listSuratIzinAdapter.setOnItemClickCallback(object :
+            ListSuratIzinAdapter.OnItemClickCallback {
             override fun onItemClicked(data: SuratIzin) {
                 onItemSuratIzinClicked(data)
             }
@@ -123,9 +110,19 @@ class SuratDiajukanFragment : BaseFragment(),
         startActivity(Intent(context, PilihJenisSuratActivity::class.java))
     }
 
+    override fun onSwipeRefresh() {
+        CoroutineScope(Dispatchers.Main).launch {
+            dataSuratDiajukan = mPresenter?.getSuratDiajukan()
+            if (dataSuratDiajukan != null) {
+                onGetSuratDiajukanSuccess(dataSuratDiajukan!!)
+            }
+        }
+    }
+
     override fun goToDetailSuratDiajukan(data: SuratIzin) {
-        //TODO("Not yet implemented")
-        showToast("Surat ${data.kdSuratIzin} ditekan!")
+        val intent = Intent(requireContext(), DetailSuratActivity::class.java)
+        intent.putExtra(Constants.DATA_SURAT, data)
+        startActivity(intent)
     }
 
     override fun attachPresenter(presenter: SuratDiajukanContract.Presenter) {
