@@ -18,4 +18,8 @@
         <item name="android:fontFamily">@font/regular</item>
     </style>
 
+    <style name="SplashScreenStyle" parent="LoginTheme">
+        <item name="backgroundColor">@color/colorPrimary</item>
+    </style>
+
 </resources>

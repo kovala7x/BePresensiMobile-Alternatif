@@ -119,4 +119,8 @@
     <string name="title_kelas">Kelas</string>
     <string name="title_toleransi_keterlambatan">Toleransi Keterlambatan</string>
     <string name="dummy_toleransi_telat">10 Menit</string>
+    <string name="title_activity_splashscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_bepresensi">BePresensi</string>
 </resources>

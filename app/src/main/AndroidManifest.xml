@@ -18,7 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ubah_toleransi_keterlambatan.UbahToleransiKeterlambatanActivity"></activity>
+        <activity
+            android:name=".ui.splashscreen.SplashscreenActivity"
+            android:theme="@style/SplashScreenStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ubah_toleransi_keterlambatan.UbahToleransiKeterlambatanActivity" />
         <activity android:name=".ui.jadwal_diampu.JadwalDiampuActivity" />
         <activity android:name=".ui.detail_surat.DetailSuratActivity" />
         <activity android:name=".ui.pilih_jenis_surat.PilihJenisSuratActivity" />
@@ -33,13 +41,7 @@
         <activity android:name=".ui.atur_toleransi.AturToleransiActivity" />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:theme="@style/LoginTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/LoginTheme" />
         <activity android:name=".ui.ajukan_surat.AjukanSuratActivity" />
         <activity android:name=".ui.main.MainActivity" />
     </application>

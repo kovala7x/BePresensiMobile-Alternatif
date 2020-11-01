@@ -3,6 +3,7 @@ package com.trateg.bepresensimobile.util
 class Constants {
 
     companion object {
+        const val SPLASHSCREEN_TIME = 3000L
         const val BASE_URL = "http://192.168.43.218:8000/api/"
         const val BEACON_TIMEOUT = 20000L
         const val REQUEST_TIMEOUT = 10000L
