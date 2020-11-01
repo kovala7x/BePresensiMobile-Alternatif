@@ -25,6 +25,10 @@ interface ApiService {
     suspend fun getDetailSurat(@Path("kdSuratIzin") kdSuratIzin :String) : Response<BaseResponse>
 
     @Headers("Accept: application/json")
+    @GET("mobile/jadwal/diampu-dosen/{KdDosen}")
+    suspend fun getJadwalDiampu(@Path("KdDosen") KdDosen :String) : Response<BaseResponseList>
+
+    @Headers("Accept: application/json")
     @GET("mobile/jadwal/mahasiswa/{nim}")
     suspend fun getJadwalMhs(@Path("nim") nim :String) : Response<BaseResponseList>
 
@@ -97,6 +101,12 @@ interface ApiService {
     @POST("mobile/presensi/ubah-status/")
     suspend fun postUbahStatusKehadiran(@Part("kd_kehadiran") kdKehadiran: Int,
                                         @Part("is_hadir") isHadir: Int) : Response<BaseResponse>
+
+    @Multipart
+    @Headers("Accept: application/json")
+    @POST("mobile/jadwal/ubah-toleransi-keterlambatan/")
+    suspend fun postUbahToleransiKeterlambatan(@Part("kd_jadwal") kdJadwal: String,
+                                               @Part("toleransi_keterlambatan") toleransiKeterlambatan: Int) : Response<BaseResponse>
 
     @Multipart
     @Headers("Accept: application/json")

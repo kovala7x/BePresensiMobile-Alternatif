@@ -11,6 +11,8 @@ data class Jadwal(
     val beritaAcara: BeritaAcara?,
     @SerializedName("dosen")
     val dosen: Dosen?,
+    @SerializedName("hari")
+    val hari: Hari?,
     @SerializedName("jam_presensi_dibuka")
     val jamPresensiDibuka: String?,
     @SerializedName("jam_presensi_ditutup")

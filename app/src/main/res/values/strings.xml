@@ -110,4 +110,13 @@
     <string name="title_tolak">Tolak</string>
     <string name="title_setuju">Setuju</string>
     <string name="title_nama">Nama:</string>
+    <string name="dummy_toleransi_waktu">Toleransi 10 menit</string>
+    <string name="dummy_hari">Kamis</string>
+    <string name="dummy_jadwal_diampu">Terdapat 5 jadwal yang diampu</string>
+    <string name="dummy_kode_kelas">D3B2018</string>
+    <string name="dummy_kelas_lokasi">D3B2017 - R202</string>
+    <string name="title_hari">Hari</string>
+    <string name="title_kelas">Kelas</string>
+    <string name="title_toleransi_keterlambatan">Toleransi Keterlambatan</string>
+    <string name="dummy_toleransi_telat">10 Menit</string>
 </resources>

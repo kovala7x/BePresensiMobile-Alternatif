@@ -9,6 +9,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.trateg.bepresensimobile.BaseFragment
 import com.trateg.bepresensimobile.R
+import com.trateg.bepresensimobile.ui.jadwal_diampu.JadwalDiampuActivity
 import com.trateg.bepresensimobile.ui.login.LoginActivity
 import com.trateg.bepresensimobile.util.SessionManager
 import kotlinx.android.synthetic.main.fragment_profil.*
@@ -86,6 +87,9 @@ class ProfilFragment : BaseFragment(),
         layoutRekap.visibility = View.GONE
         btnAturToleransi.visibility = View.VISIBLE
         swipeRefreshProfil.isEnabled = false
+        btnAturToleransi.setOnClickListener {
+            startActivity(Intent(context, JadwalDiampuActivity::class.java))
+        }
     }
 
     override fun setMahasiswaMode() {
